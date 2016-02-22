@@ -1,0 +1,16 @@
+{
+  "name": "RNApp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "ios": "open ios/RNApp.xcodeproj && npm start",
+    "android": "echo TODO: Android start script"
+  },
+  "dependencies": {
+    "ddp-client": "0.1.1",
+    "ejson": "^2.1.2",
+    "lodash": "^4.5.0",
+    "react-native": "^0.20.0"
+  }
+}
