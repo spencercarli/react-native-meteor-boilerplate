@@ -18,7 +18,7 @@ let opts = {
   env: 'dev', // ['dev', 'staging', 'prod']
   // codePushDeploymentKey: '',
   ddpConfig: {
-    maintainCollections : false,
+    maintainCollections : true,
   }
 }
 

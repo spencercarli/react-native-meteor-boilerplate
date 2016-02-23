@@ -21,6 +21,9 @@ export default class RNApp extends Component {
         this.setState({connected: false});
       } else {
         this.setState({connected: true});
+        ddpClient.loginWithToken((err, res) => {
+          if (!err) this.handleSignedInStatus(true);
+        });
       }
     });
   }

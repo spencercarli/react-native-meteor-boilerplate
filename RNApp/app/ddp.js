@@ -48,7 +48,10 @@ ddpClient.signUpWithEmail = (email, password, cb) => {
     password: password
   };
 
-  return ddpClient.call('createUser', [params], cb);
+  return ddpClient.call('createUser', [params], (err, res) => {
+    ddpClient.onAuthResponse(err, res);
+    cb && cb(err, res)
+  });
 };
 
 ddpClient.signUpWithUsername = (username, password, cb) => {
@@ -57,7 +60,10 @@ ddpClient.signUpWithUsername = (username, password, cb) => {
     password: password
   };
 
-  return ddpClient.call('createUser', [params], cb);
+  return ddpClient.call('createUser', [params], (err, res) => {
+    ddpClient.onAuthResponse(err, res);
+    cb && cb(err, res)
+  });
 };
 
 ddpClient.loginWithEmail = (email, password, cb) => {
@@ -68,7 +74,10 @@ ddpClient.loginWithEmail = (email, password, cb) => {
     password: password
   };
 
-  return ddpClient.call("login", [params], cb)
+  return ddpClient.call("login", [params], (err, res) => {
+    ddpClient.onAuthResponse(err, res);
+    cb && cb(err, res)
+  })
 }
 
 ddpClient.loginWithUsername = (username, password, cb) => {
@@ -79,7 +88,10 @@ ddpClient.loginWithUsername = (username, password, cb) => {
     password: password
   };
 
-  return ddpClient.call("login", [params], cb)
+  return ddpClient.call("login", [params], (err, res) => {
+    ddpClient.onAuthResponse(err, res);
+    cb && cb(err, res)
+  })
 }
 
 ddpClient.onAuthResponse = (err, res) => {
@@ -94,10 +106,15 @@ ddpClient.onAuthResponse = (err, res) => {
   }
 }
 
-ddpClient.loginWithToken = (loginToken, cb) => {
-  let params = { resume: loginToken };
-
-  return ddpClient.call("login", [params], cb)
+ddpClient.loginWithToken = (cb) => {
+  let params = { resume: '' };
+  AsyncStorage.getItem('loginToken')
+    .then((token) => {
+      if (token) {
+        params.resume = token;
+        ddpClient.call("login", [params], cb)
+      }
+    });
 }
 
 ddpClient.logout = (cb) => {
@@ -105,6 +122,19 @@ ddpClient.logout = (cb) => {
     then((res) => {
       ddpClient.call("logout", [], cb)
     });
+}
+
+ddpClient.user = () => {
+  return AsyncStorage.getItem('userId')
+    .then((userId) => {
+      if (userId) {
+        ddpClient.collections = ddpClient.collections || {};
+        ddpClient.collections.users = ddpClient.collections.users || {};
+        return ddpClient.collections.users[userId];
+      } else {
+        return null;
+      }
+    })
 }
 
 export default ddpClient;
