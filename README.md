@@ -9,11 +9,14 @@ _Note #2:_ I generally split the React Native app and Meteor app into separate r
 ## Getting started with Meteor
 
 1. Make sure you have [Meteor](https://www.meteor.com/) installed.
+2. `cd MeteorApp/ && meteor`
 
 
 ## Getting started with React Native
 
 1. Make sure you have [React Native](https://facebook.github.io/react-native/) installed.
+2. `cd RNApp/`
+3. `npm run ios` or `npm run android`
 
 
 ## Helpful Commands

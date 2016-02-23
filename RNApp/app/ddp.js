@@ -4,7 +4,7 @@ import EJSON from 'ejson';
 import config from './config';
 import { AsyncStorage } from 'react-native';
 
-let ddpClient = new DDPClient(config.ddp);
+let ddpClient = new DDPClient(config.ddpConfig);
 
 /*
  * extend capabilities of ddpClient
