@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "ios": "open ios/RNApp.xcodeproj && npm start",
-    "android": "echo TODO: Android start script"
+    "android": "react-native run-android"
   },
   "dependencies": {
     "ddp-client": "0.1.1",
