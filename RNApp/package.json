@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "ios": "open ios/RNApp.xcodeproj && npm start",
-    "android": "react-native run-android"
+    "ios": "open ios/RNApp.xcodeproj"
   },
   "dependencies": {
     "ddp-client": "0.1.1",

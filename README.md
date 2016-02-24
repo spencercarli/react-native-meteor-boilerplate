@@ -4,67 +4,52 @@ A starting point for integrating a React Native app with a Meteor app. I've used
 
 _Note #1:_ This project only specifies an opinion on the *React Native* project architecture.
 
-_Note #2:_ I generally split the React Native app and Meteor app into separate repositories. That's just personal preference. You can keep them in the same repo, as shown here, if you wish.
-
 ## Getting started with Meteor
 
 1. Make sure you have [Meteor](https://www.meteor.com/) installed.
-2. `cd MeteorApp/ && meteor`
+2. After cloning the repo, `cd MeteorApp/ && meteor`
 
 
 ## Getting started with React Native
 
 1. Make sure you have [React Native](https://facebook.github.io/react-native/) installed.
-2. `cd RNApp/`
-3. `npm run ios` or `npm run android`
+2. After cloning the repo, `cd RNApp/ && npm install`
 
+## Running on iOS
 
-## Helpful Commands
+### In the Simulator
 
-From the `RNApp` directory:
+From the `RNApp/` directory you can run `npm run ios`. This will start the react native packager and open up Xcode. The default configurations in `app/config.js` should work fine for you. The press the play button in Xcode.
 
-- `npm run ios`: Open the app in Xcode and start the packager.
-- `npm run android`: Start the app in the android sim?
+### On a Device
+
+In `RNApp/ios/RNApp/AppDelegate.m` change the the `jsCodeLocation` line and swap out `localhost` for your machine's IP Address. You can get your IP Address by running `ipconfig getifaddr en1`.
+
+You'll also have to change the `host` option in `app/config.js` to be your machine's IP Address.
+
+Then `npm run ios` to open Xcode.
+
+Then plug your phone into your machine and select your device in Xcode. Press the play button in Xcode. Make sure you device is unlocked
+
+## Running on Android
+
+### In the Simulator
+
+First you'll have to change the `host` option in `RNApp/app/config.js` to your Meteor server's IP address. While developing this will likely be your machine. On OSX you can get your IP address by running `ipconfig getifaddr en1` in a terminal window.
+
+Once you've done that (and following successful completion of the [React Native Android Installation](https://facebook.github.io/react-native/docs/android-setup.html#content)) you can run `react-native run-android` to get the app running.
+
+_Note:_ You have to have the android simulator running before running `react-native run-android`.
+
+### On a Device
+
+__HELP REQUESTED__: I don't have an Android device so I can't test this out.
 
 ## Project Organization
 
-Everything discussed in this section pertains to the `RNApp` directory.
+If you're interested in seeing why the React Native project is organized the way it is please [refer to this document](/docs/react-native-project-organization.md).
 
-First, I've moved nearly all the logic out of `index.ios.js` and `index.android.js` so that we can maximize code reuse. All of our Javascript code will live in the `app/` folder. I'll go through each subfolder below.
-
-
-### `app/api/`
-
-Any external API calls would live here. I've also considered putting DDP interactions in here as well to clean up the components.
-
-### `app/components/`
-
-These are "dumb" components that make up UI elements. For example: stylized inputs or button components.
-
-### `app/containers/`
-
-These components make up the various "views" of my application. These are things like a sign in screen, settings tab, main tab, etc.
-
-### `app/helpers/`
-
-Basic helpers that I use in various places throughout the app. Sorting, math, etc.
-
-### `app/images/`
-
-Store all your images here. This helps you use a standard approach for images across Android and iOS (a change we saw in React Native version `0.14.0`).
-
-### `app/config.js`
-
-Any configuration for your app. Think of it like a `settings.json` in a Meteor context.
-
-### `app/ddp.js`
-
-My DDP related functions. This file could likely be broken out into its own package but I find myself tweaking it occasionally so I keep it in the project. It's mostly just nice-to-have functions.
-
-### `app/index.js`
-
-The root component of my application. This is where I initialize ddp and is the file that both `index.ios.js` and `index.android.js` require.
-
+The Meteor project is completely up to you at this point.
 
 ## Technologies Used
 
