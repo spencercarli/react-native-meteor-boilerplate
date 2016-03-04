@@ -7,7 +7,7 @@
     "ios": "open ios/RNApp.xcodeproj"
   },
   "dependencies": {
-    "ddp-client": "0.1.1",
+    "ddp-client": "spencercarli/node-ddp-client",
     "ejson": "^2.1.2",
     "lodash": "^4.5.0",
     "react-native": "^0.20.0"
