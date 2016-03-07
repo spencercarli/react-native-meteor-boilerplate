@@ -9,6 +9,7 @@
   "dependencies": {
     "ddp-client": "spencercarli/node-ddp-client",
     "ejson": "^2.1.2",
+    "hash.js": "^1.0.3",
     "lodash": "^4.5.0",
     "react-native": "^0.20.0"
   }
