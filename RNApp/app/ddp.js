@@ -1,5 +1,4 @@
 import DDPClient from 'ddp-client';
-import hash from 'hash.js';
 import _ from 'lodash';
 import EJSON from 'ejson';
 import config from './config';
@@ -10,13 +9,6 @@ let ddpClient = new DDPClient(config.ddpConfig);
 /*
  * extend capabilities of ddpClient
  */
-ddpClient.sha256 = (password) => {
-  return {
-    digest: hash.sha256().update(password).digest('hex'),
-    algorithm: "sha-256"
-  };
-};
-
 ddpClient.callPromise = (methodName, params) => {
   params = params || undefined;
   if (params && !_.isArray(params)) {
@@ -53,9 +45,8 @@ ddpClient.subscribePromise = (pubName, params) => {
 ddpClient.signUpWithEmail = (email, password, cb) => {
   let params = {
     email: email,
-    password: ddpClient.sha256(password)
+    password: password
   };
-  console.log(params);
 
   return ddpClient.call('createUser', [params], (err, res) => {
     ddpClient.onAuthResponse(err, res);
@@ -66,9 +57,8 @@ ddpClient.signUpWithEmail = (email, password, cb) => {
 ddpClient.signUpWithUsername = (username, password, cb) => {
   let params = {
     username: username,
-    password: ddpClient.sha256(password)
+    password: password
   };
-  console.log(params);
 
   return ddpClient.call('createUser', [params], (err, res) => {
     ddpClient.onAuthResponse(err, res);
@@ -81,9 +71,8 @@ ddpClient.loginWithEmail = (email, password, cb) => {
     user: {
       email: email
     },
-    password: ddpClient.sha256(password)
+    password: password
   };
-  console.log(params);
 
   return ddpClient.call("login", [params], (err, res) => {
     ddpClient.onAuthResponse(err, res);
@@ -96,9 +85,8 @@ ddpClient.loginWithUsername = (username, password, cb) => {
     user: {
       username: username
     },
-    password: ddpClient.sha256(password)
+    password: password
   };
-  console.log(params);
 
   return ddpClient.call("login", [params], (err, res) => {
     ddpClient.onAuthResponse(err, res);
