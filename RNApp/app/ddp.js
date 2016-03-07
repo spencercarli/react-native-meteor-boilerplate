@@ -28,7 +28,7 @@ ddpClient.callPromise = (methodName, params) => {
       }
     );
   });
-}
+};
 
 ddpClient.subscribePromise = (pubName, params) => {
   params = params || undefined;
@@ -77,8 +77,8 @@ ddpClient.loginWithEmail = (email, password, cb) => {
   return ddpClient.call("login", [params], (err, res) => {
     ddpClient.onAuthResponse(err, res);
     cb && cb(err, res)
-  })
-}
+  });
+};
 
 ddpClient.loginWithUsername = (username, password, cb) => {
   let params = {
@@ -91,8 +91,8 @@ ddpClient.loginWithUsername = (username, password, cb) => {
   return ddpClient.call("login", [params], (err, res) => {
     ddpClient.onAuthResponse(err, res);
     cb && cb(err, res)
-  })
-}
+  });
+};
 
 ddpClient.onAuthResponse = (err, res) => {
   if (res) {
@@ -104,7 +104,7 @@ ddpClient.onAuthResponse = (err, res) => {
   } else {
     AsyncStorage.multiRemove(['userId', 'loginToken', 'loginTokenExpires']);
   }
-}
+};
 
 ddpClient.loginWithToken = (cb) => {
   let params = { resume: '' };
@@ -112,17 +112,17 @@ ddpClient.loginWithToken = (cb) => {
     .then((token) => {
       if (token) {
         params.resume = token;
-        ddpClient.call("login", [params], cb)
+        ddpClient.call("login", [params], cb);
       }
     });
-}
+};
 
 ddpClient.logout = (cb) => {
   AsyncStorage.multiRemove(['userId', 'loginToken', 'loginTokenExpires']).
     then((res) => {
-      ddpClient.call("logout", [], cb)
+      ddpClient.call("logout", [], cb);
     });
-}
+};
 
 ddpClient.user = () => {
   return AsyncStorage.getItem('userId')
@@ -134,7 +134,7 @@ ddpClient.user = () => {
       } else {
         return null;
       }
-    })
-}
+    });
+};
 
 export default ddpClient;
