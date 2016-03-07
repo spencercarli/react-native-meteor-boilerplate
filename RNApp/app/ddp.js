@@ -1,4 +1,5 @@
 import DDPClient from 'ddp-client';
+import hash from 'hash.js';
 import _ from 'lodash';
 import EJSON from 'ejson';
 import config from './config';
@@ -9,6 +10,13 @@ let ddpClient = new DDPClient(config.ddpConfig);
 /*
  * extend capabilities of ddpClient
  */
+ddpClient.sha256 = (password) => {
+  return {
+    digest: hash.sha256().update(password).digest('hex'),
+    algorithm: "sha-256"
+  };
+};
+
 ddpClient.callPromise = (methodName, params) => {
   params = params || undefined;
   if (params && !_.isArray(params)) {
@@ -28,7 +36,7 @@ ddpClient.callPromise = (methodName, params) => {
       }
     );
   });
-}
+};
 
 ddpClient.subscribePromise = (pubName, params) => {
   params = params || undefined;
@@ -45,8 +53,9 @@ ddpClient.subscribePromise = (pubName, params) => {
 ddpClient.signUpWithEmail = (email, password, cb) => {
   let params = {
     email: email,
-    password: password
+    password: ddpClient.sha256(password)
   };
+  console.log(params);
 
   return ddpClient.call('createUser', [params], (err, res) => {
     ddpClient.onAuthResponse(err, res);
@@ -57,8 +66,9 @@ ddpClient.signUpWithEmail = (email, password, cb) => {
 ddpClient.signUpWithUsername = (username, password, cb) => {
   let params = {
     username: username,
-    password: password
+    password: ddpClient.sha256(password)
   };
+  console.log(params);
 
   return ddpClient.call('createUser', [params], (err, res) => {
     ddpClient.onAuthResponse(err, res);
@@ -71,28 +81,30 @@ ddpClient.loginWithEmail = (email, password, cb) => {
     user: {
       email: email
     },
-    password: password
+    password: ddpClient.sha256(password)
   };
+  console.log(params);
 
   return ddpClient.call("login", [params], (err, res) => {
     ddpClient.onAuthResponse(err, res);
     cb && cb(err, res)
-  })
-}
+  });
+};
 
 ddpClient.loginWithUsername = (username, password, cb) => {
   let params = {
     user: {
       username: username
     },
-    password: password
+    password: ddpClient.sha256(password)
   };
+  console.log(params);
 
   return ddpClient.call("login", [params], (err, res) => {
     ddpClient.onAuthResponse(err, res);
     cb && cb(err, res)
-  })
-}
+  });
+};
 
 ddpClient.onAuthResponse = (err, res) => {
   if (res) {
@@ -104,7 +116,7 @@ ddpClient.onAuthResponse = (err, res) => {
   } else {
     AsyncStorage.multiRemove(['userId', 'loginToken', 'loginTokenExpires']);
   }
-}
+};
 
 ddpClient.loginWithToken = (cb) => {
   let params = { resume: '' };
@@ -112,17 +124,17 @@ ddpClient.loginWithToken = (cb) => {
     .then((token) => {
       if (token) {
         params.resume = token;
-        ddpClient.call("login", [params], cb)
+        ddpClient.call("login", [params], cb);
       }
     });
-}
+};
 
 ddpClient.logout = (cb) => {
   AsyncStorage.multiRemove(['userId', 'loginToken', 'loginTokenExpires']).
     then((res) => {
-      ddpClient.call("logout", [], cb)
+      ddpClient.call("logout", [], cb);
     });
-}
+};
 
 ddpClient.user = () => {
   return AsyncStorage.getItem('userId')
@@ -134,7 +146,7 @@ ddpClient.user = () => {
       } else {
         return null;
       }
-    })
-}
+    });
+};
 
 export default ddpClient;
