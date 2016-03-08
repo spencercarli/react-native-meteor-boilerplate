@@ -12,7 +12,7 @@ export default class RNApp extends Component {
     this.state = {
       connected: false,
       signedIn: false
-    }
+    };
   }
 
   componentWillMount() {
