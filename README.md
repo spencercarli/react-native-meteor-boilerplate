@@ -43,7 +43,35 @@ _Note:_ You have to have the android simulator running before running `react-nat
 
 ### On a Device
 
-__HELP REQUESTED__: I don't have an Android device so I can't test this out.
+#### For Linux
+##### Enable USB Debugging
+
+Enable USB Debugging on your phone. If already connected to your computer unplug and replug the USB connection afterwards. Android 5 steps below:
+
+> Settings > About Phone > Build number > Tap it 7 times to become developer;
+> Settings > Developer Options > USB Debugging.
+
+##### Setup Device on Linux
+
+Configure how the device will connect to the meteor server. See [running android on a device](https://facebook.github.io/react-native/docs/running-on-device-android.html) to pick from the options.
+
+Plug in your device and use _lusb_ to find the first 4 digits of  your device ID.
+> lsusb
+Bus 001 Device 003: ID 04e8:2e76 Motorola PCS
+
+Enter this in udev rules. In the example we are copying over `04e8`
+> echo SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", MODE="0666", GROUP="plugdev" | sudo tee /etc/udev/rules.d/51-android-usb.rules
+
+Check that your device is properly connecting to ADB, the Android Debug Bridge, by using:
+> adb devices
+
+These steps are abstracted from the pages [running on device](https://facebook.github.io/react-native/docs/running-on-device-android.html) and [getting started](https://facebook.github.io/react-native/docs/getting-started-linux.html#setting-up-an-android-device) on linux. 
+
+##### Install App and Run on Device for Linux
+
+Build and install on your device, launch the react server, and then launch the app on your phone:
+> react-native android
+> react-native run-android
 
 ## Project Organization
 
