@@ -35,7 +35,12 @@ Then plug your phone into your machine and select your device in Xcode. Press th
 
 ### In the Simulator
 
-First you'll have to change the `host` option in `RNApp/app/config.js` to your Meteor server's IP address. While developing this will likely be your machine. On OSX you can get your IP address by running `ipconfig getifaddr en1` in a terminal window.
+First you'll have to change the `host` option in `RNApp/app/config.js` to your Meteor server's IP address. While developing this will likely be your machine. 
+
+On OSX you can get your IP address by running `ipconfig getifaddr en1` in a terminal window.
+
+On linux running `ifconfig` will get you a list of your network interfaces along with their IP addresses. For the stock Google simulator you will want to use the IP of your active network connection (probably `eth0` or `wlan0`). If you are using the Genymotion simulator, it runs in a Virtual Box VM with a Host-only network interface. You will want to use the IP address of this network which may look like `vboxnet0` under ifconfig.
+
 
 Once you've done that (and following successful completion of the [React Native Android Installation](https://facebook.github.io/react-native/docs/android-setup.html#content)) you can run `react-native run-android` to get the app running.
 
@@ -43,7 +48,38 @@ _Note:_ You have to have the android simulator running before running `react-nat
 
 ### On a Device
 
-__HELP REQUESTED__: I don't have an Android device so I can't test this out.
+#### Enable USB Debugging
+
+Enable USB Debugging on your phone. If already connected to your computer unplug and replug the USB connection afterwards. Android 5 steps below:
+
+> Settings > About Phone > Build number > Tap it 7 times to become developer;
+> Settings > Developer Options > USB Debugging.
+
+#### For Linux
+
+##### Setup Device on Linux
+
+Configure how the device will connect to the meteor server. See [running android on a device](https://facebook.github.io/react-native/docs/running-on-device-android.html) to pick from the options.
+
+Plug in your device and use _lusb_ to find the first 4 digits of  your device ID.
+> lsusb
+Bus 001 Device 003: ID 04e8:2e76 Motorola PCS
+
+Enter this in udev rules. In the example we are copying over `04e8`
+> echo SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", MODE="0666", GROUP="plugdev" | sudo tee /etc/udev/rules.d/51-android-usb.rules
+
+Check that your device is properly connecting to ADB, the Android Debug Bridge, by using:
+> adb devices
+
+_Note:_ You should have only one active ADB connection. If you have a simulator running you should close it before proceeding.
+
+These steps are abstracted from the pages [running on device](https://facebook.github.io/react-native/docs/running-on-device-android.html) and [getting started](https://facebook.github.io/react-native/docs/getting-started-linux.html#setting-up-an-android-device) on linux. 
+
+##### Install App and Run on Device for Linux
+
+Build and install on your device by running `react-native run-android`
+
+Launch the react server by running `react-native start` and then launch the app on your phone.
 
 ## Project Organization
 
