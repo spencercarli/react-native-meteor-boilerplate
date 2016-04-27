@@ -1,4 +1,4 @@
-import DDPClient from 'ddp-client';
+import DDPClient from 'node-ddp-client';
 import hash from 'hash.js';
 import _ from 'lodash';
 import EJSON from 'ejson';
