@@ -91,6 +91,6 @@ The Meteor project is completely up to you at this point.
 
 - [Meteor](https://www.meteor.com/)
 - [React Native](https://facebook.github.io/react-native/)
-- [Node DDP Client](https://github.com/hharnisc/node-ddp-client) (at version 0.1.1)
+- [Node DDP Client](https://github.com/spencercarli/node-ddp-client)
 - [EJSON](https://github.com/primus/ejson)
 - [lodash](https://lodash.com/)
