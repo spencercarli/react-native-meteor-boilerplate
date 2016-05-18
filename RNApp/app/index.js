@@ -1,4 +1,4 @@
-import React, { Component } from 'react-native';
+import React, { Component } from 'react';
 
 import SignIn from './containers/signIn';
 import SignOut from './containers/signOut';

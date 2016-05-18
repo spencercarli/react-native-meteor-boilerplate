@@ -1,9 +1,5 @@
-import React, {
-  Component,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import Button from '../components/button';
 
 export default class SignOut extends Component {
