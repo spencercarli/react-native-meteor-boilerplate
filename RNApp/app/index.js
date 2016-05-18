@@ -1,25 +1,20 @@
 import React, { Component } from 'react';
+import { View, Text } from 'react-native';
+import Meteor, { createContainer } from 'react-native-meteor';
 
 import SignIn from './containers/signIn';
 import SignOut from './containers/signOut';
+import config from './config';
+
+Meteor.connect(config.METEOR_URL);
 
 class RNApp extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      connected: false,
-      signedIn: false
-    };
-  }
-
-  handleSignedInStatus(status = false) {
-    this.setState({ signedIn: status });
-  }
-
   render() {
-    let { connected, signedIn } = this.state;
-    if (connected && signedIn) {
+    const { status, user } = this.props;
+
+    if (status.connected === false) {
+      return <View><Text>Loading</Text></View>;
+    } else if (user !== null) {
       return <SignOut />;
     } else {
       return <SignIn />;
@@ -27,4 +22,9 @@ class RNApp extends Component {
   }
 }
 
-export default RNApp;
+export default createContainer(() => {
+  return {
+    status: Meteor.status(),
+    user: Meteor.user(),
+  };
+}, RNApp);

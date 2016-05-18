@@ -7,21 +7,14 @@ const getDB = (env) => {
       }
     case 'dev':
     default:
-      return {
-        host: 'localhost',
-        port: '3000'
-      }
+      return 'http://localhost:3000/websocket';
   }
 };
 
 let opts = {
   env: 'dev', // ['dev', 'staging', 'prod']
   // codePushDeploymentKey: '',
-  ddpConfig: {
-    maintainCollections : true,
-  }
 }
-
-Object.assign(opts.ddpConfig, getDB(opts.env));
+opts.METEOR_URL = getDB(opts.env);
 
 export default opts;
