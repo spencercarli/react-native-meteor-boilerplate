@@ -3,9 +3,7 @@ import React, { Component } from 'react-native';
 import SignIn from './containers/signIn';
 import SignOut from './containers/signOut';
 
-import ddpClient from './ddp';
-
-export default class RNApp extends Component {
+class RNApp extends Component {
   constructor(props) {
     super(props);
 
@@ -15,19 +13,6 @@ export default class RNApp extends Component {
     };
   }
 
-  componentWillMount() {
-    ddpClient.connect((error, wasReconnect) => {
-      if (error) {
-        this.setState({connected: false});
-      } else {
-        this.setState({connected: true});
-        ddpClient.loginWithToken((err, res) => {
-          if (!err) this.handleSignedInStatus(true);
-        });
-      }
-    });
-  }
-
   handleSignedInStatus(status = false) {
     this.setState({ signedIn: status });
   }
@@ -35,18 +20,11 @@ export default class RNApp extends Component {
   render() {
     let { connected, signedIn } = this.state;
     if (connected && signedIn) {
-      return (
-        <SignOut
-          changedSignedIn={(status) => this.handleSignedInStatus(status)}
-          />
-      );
+      return <SignOut />;
     } else {
-      return (
-        <SignIn
-          connected={connected}
-          changedSignedIn={(status) => this.handleSignedInStatus(status)}
-          />
-      );
+      return <SignIn />;
     }
   }
 }
+
+export default RNApp;

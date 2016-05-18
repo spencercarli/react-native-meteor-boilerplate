@@ -4,9 +4,7 @@ import React, {
   Text,
   View
 } from 'react-native';
-
 import Button from '../components/button';
-import ddpClient from '../ddp';
 
 export default class SignOut extends Component {
   constructor(props) {
@@ -17,22 +15,8 @@ export default class SignOut extends Component {
     }
   }
 
-  _userObserver = null;
-  componentDidMount() {
-    ddpClient.user()
-      .then((user) => {
-        this.setState({user})
-      })
-  }
-
-  componentWillUnmount() {
-    this._userObserver && this._userObserver.stop();
-  }
-
   handleSignOut() {
-    ddpClient.logout(() => {
-      this.props.changedSignedIn(false);
-    });
+
   }
 
   render() {

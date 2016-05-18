@@ -7,7 +7,6 @@ import React, {
 } from 'react-native';
 
 import Button from '../components/button';
-import ddpClient from '../ddp';
 
 export default class SignIn extends Component {
   constructor(props) {
@@ -35,25 +34,13 @@ export default class SignIn extends Component {
 
   handleSignIn() {
     if (this.validInput()) {
-      ddpClient.loginWithEmail(this.state.email, this.state.password, (error, res) => {
-        if (error) {
-          this.setState({error: error.reason})
-        } else {
-          this.props.changedSignedIn(true);
-        }
-      });
+      console.log('TODO: handle sign in');
     }
   }
 
   handleCreateAccount() {
     if (this.validInput()) {
-      ddpClient.signUpWithEmail(this.state.email, this.state.password, (error, res) => {
-        if (error) {
-          this.setState({error: error.reason})
-        } else {
-          this.props.changedSignedIn(true);
-        }
-      });
+      console.log('TODO: handle create account');
     }
   }
 
