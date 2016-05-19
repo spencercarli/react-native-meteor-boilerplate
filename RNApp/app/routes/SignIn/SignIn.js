@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import Button from '../../components/Button';
 import GenericTextInput, { InputWrapper } from '../../components/GenericTextInput';
+import { COLORS } from '../../styles';
 
 const window = Dimensions.get('window');
 
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5F2F9',
+    backgroundColor: COLORS.background,
   },
   buttons: {
     flexDirection: 'row',
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   errorText: {
-    color: '#FA3256',
+    color: COLORS.errorText,
     fontSize: 14,
   },
   logo: {

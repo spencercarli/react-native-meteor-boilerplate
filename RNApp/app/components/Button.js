@@ -1,16 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { COLORS } from '../styles';
 
 const styles = StyleSheet.create({
   button: {
     paddingVertical: 10,
     paddingHorizontal: 20,
-    // backgroundColor: '#A7A7A7',
-    backgroundColor: '#39BD98',
+    backgroundColor: COLORS.buttonBackground,
     margin: 5,
   },
   buttonText: {
-    color: '#FFFFFF',
+    color: COLORS.buttonText,
     fontSize: 16,
     fontWeight: '500',
   },

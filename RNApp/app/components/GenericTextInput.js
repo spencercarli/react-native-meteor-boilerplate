@@ -1,12 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, TextInput, Dimensions } from 'react-native';
+import { COLORS } from '../styles';
 
 const window = Dimensions.get('window');
 const styles = StyleSheet.create({
   input: {
     height: 40,
     borderRadius: 5,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: COLORS.inputBackground,
     marginLeft: 10,
     marginVertical: 5,
     paddingVertical: 5,
@@ -14,12 +15,12 @@ const styles = StyleSheet.create({
   },
   divider: {
     height: 1,
-    backgroundColor: '#E4E2E5',
+    backgroundColor: COLORS.inputDivider,
     flex: 1,
     marginLeft: 10,
   },
   inputWrapper: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: COLORS.inputBackground,
     width: window.width,
   },
 });
