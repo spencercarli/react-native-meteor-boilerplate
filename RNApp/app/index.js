@@ -2,8 +2,8 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
 
-import SignIn from './containers/SignIn';
-import SignOut from './containers/SignOut';
+import SignIn from './routes/SignIn';
+import SignOut from './routes/SignOut';
 import config from './config';
 
 Meteor.connect(config.METEOR_URL);
