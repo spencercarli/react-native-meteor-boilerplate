@@ -1,20 +1,12 @@
-const getDB = (env) => {
-  switch (env) {
-    case 'prod':
-    case 'staging':
-      return {
-        url: '' // Websocket URL for your app. For a meteor app use `wss://my-app.meteor.com/websocket`
-      }
-    case 'dev':
-    default:
-      return 'http://localhost:3000/websocket';
-  }
-};
-
-let opts = {
-  env: 'dev', // ['dev', 'staging', 'prod']
-  // codePushDeploymentKey: '',
+// If you're running on a device or in the Android simulator be sure to change
+let METEOR_URL = 'http://localhost:3000/websocket';
+if (process.env.NODE_ENV === 'production') {
+  METEOR_URL = ''; // your production server url
 }
-opts.METEOR_URL = getDB(opts.env);
 
-export default opts;
+const config = {
+  env: process.env.NODE_ENV,
+  METEOR_URL,
+}
+
+export default config;
