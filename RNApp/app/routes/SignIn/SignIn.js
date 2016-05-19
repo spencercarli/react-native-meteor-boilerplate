@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 import Button from '../../components/Button';
+import GenericTextInput, { InputWrapper } from '../../components/GenericTextInput';
 
 const window = Dimensions.get('window');
 
@@ -10,21 +12,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5F2F9',
-  },
-  input: {
-    height: 40,
-    borderRadius: 5,
-    backgroundColor: '#FFFDFF',
-    marginLeft: 10,
-    marginVertical: 5,
-    paddingVertical: 5,
-    paddingHorizontal: 15,
-  },
-  divider: {
-    height: 1,
-    backgroundColor: '#E4E2E5',
-    flex: 1,
-    marginLeft: 10,
   },
   buttons: {
     flexDirection: 'row',
@@ -44,10 +31,6 @@ const styles = StyleSheet.create({
     height: 200,
     marginBottom: 40,
   },
-  inputWrapper: {
-    backgroundColor: '#FFFFFF',
-    width: window.width,
-  },
 });
 
 const SignIn = (props) => {
@@ -60,37 +43,26 @@ const SignIn = (props) => {
         source={{ uri: 'http://angular.github.io/react-native-renderer/assets/react.png' }}
       />
 
-      <View style={styles.inputWrapper}>
-        <TextInput
-          style={styles.input}
+      <InputWrapper>
+        <GenericTextInput
           placeholder="email address"
-          autoCapitalize="none"
-          autoCorrect={false}
           onChangeText={(email) => updateState({ email })}
         />
-        <View style={styles.divider} />
-        <TextInput
-          style={styles.input}
+        <GenericTextInput
           placeholder="password"
-          autoCapitalize="none"
-          autoCorrect={false}
           onChangeText={(password) => updateState({ password })}
           secureTextEntry
+          borderTop
         />
         {confirmPasswordVisible ?
-          <View>
-            <View style={styles.divider} />
-            <TextInput
-              style={styles.input}
-              placeholder="confirm password"
-              autoCapitalize="none"
-              autoCorrect={false}
-              onChangeText={(confirmPassword) => updateState({ confirmPassword })}
-              secureTextEntry
-            />
-          </View>
+          <GenericTextInput
+            placeholder="confirm password"
+            onChangeText={(confirmPassword) => updateState({ confirmPassword })}
+            secureTextEntry
+            borderTop
+          />
         : null}
-      </View>
+      </InputWrapper>
 
       <View style={styles.error}>
         <Text style={styles.errorText}>{error}</Text>
@@ -100,6 +72,8 @@ const SignIn = (props) => {
         <Button text="Sign In" onPress={signIn} />
         <Button text="Create Account" onPress={createAccount} />
       </View>
+
+      <KeyboardSpacer />
     </View>
   );
 };
