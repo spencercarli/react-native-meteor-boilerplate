@@ -67,7 +67,6 @@ const SignIn = (props) => {
           autoCapitalize="none"
           autoCorrect={false}
           onChangeText={(email) => updateState({ email })}
-          autoFocus
         />
         <View style={styles.divider} />
         <TextInput

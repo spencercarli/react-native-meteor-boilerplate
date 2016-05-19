@@ -16,18 +16,22 @@ class SignInContainer extends Component {
     };
   }
 
-  updateState(data) {
-    this.setState(data);
-  }
-
   validInput() {
-    const { email, password } = this.state;
-    let valid = false;
-    if (email.length && password.length) {
-      this.setState({ error: null });
-      valid = true;
-    } else {
+    const { email, password, confirmPassword, confirmPasswordVisible } = this.state;
+    let valid = true;
+
+    if (email.length === 0 || password.length === 0) {
       this.setState({ error: 'Email and password cannot be empty.' });
+      valid = false;
+    }
+
+    if (confirmPasswordVisible && password !== confirmPassword) {
+      this.setState({ error: 'Passwords do not match.' });
+      valid = false;
+    }
+
+    if (valid) {
+      this.setState({ error: null });
     }
 
     return valid;
@@ -45,28 +49,27 @@ class SignInContainer extends Component {
   }
 
   handleCreateAccount() {
-    if (this.state.confirmPasswordVisible === false) {
+    const { email, password, confirmPasswordVisible } = this.state;
+
+    if (confirmPasswordVisible && this.validInput()) {
+      Accounts.createUser({ email, password }, (err) => {
+        if (err) {
+          this.setState({ error: err.reason });
+        } else {
+          // hack because react-native-meteor doesn't login right away after sign in
+          this.handleSignIn();
+        }
+      });
+    } else {
       LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
       this.setState({ confirmPasswordVisible: true });
-    } else {
-      const { email, password, confirmPassword } = this.state;
-      if (this.validInput() && password === confirmPassword) {
-        Accounts.createUser({ email, password }, (err) => {
-          if (err) {
-            this.setState({ error: err.reason });
-          } else {
-            // hack because react-native-meteor doesn't login right away after sign in
-            this.handleSignIn();
-          }
-        });
-      }
     }
   }
 
   render() {
     return (
       <SignIn
-        updateState={this.updateState.bind(this)}
+        updateState={this.setState.bind(this)}
         signIn={this.handleSignIn.bind(this)}
         createAccount={this.handleCreateAccount.bind(this)}
         {...this.state}
