@@ -4,6 +4,7 @@ import KeyboardSpacer from 'react-native-keyboard-spacer';
 import Button from '../../components/Button';
 import GenericTextInput, { InputWrapper } from '../../components/GenericTextInput';
 import { COLORS } from '../../styles';
+import Logo from '../../images/rn-logo.png';
 
 const window = Dimensions.get('window');
 
@@ -27,10 +28,25 @@ const styles = StyleSheet.create({
     color: COLORS.errorText,
     fontSize: 14,
   },
+  header: {
+    marginBottom: 25,
+    alignItems: 'center',
+  },
   logo: {
-    width: 200,
-    height: 200,
-    marginBottom: 40,
+    width: 125,
+    height: 125,
+  },
+  headerText: {
+    fontSize: 30,
+    color: COLORS.headerText,
+    fontWeight: '600',
+    fontStyle: 'italic',
+  },
+  subHeaderText: {
+    fontSize: 20,
+    color: COLORS.headerText,
+    fontWeight: '400',
+    fontStyle: 'italic',
   },
 });
 
@@ -39,10 +55,15 @@ const SignIn = (props) => {
 
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.logo}
-        source={{ uri: 'http://angular.github.io/react-native-renderer/assets/react.png' }}
-      />
+      <View style={styles.header}>
+        <Image
+          style={styles.logo}
+          source={Logo}
+        />
+
+        <Text style={styles.headerText}>React Native Meteor</Text>
+        <Text style={styles.subHeaderText}>Boilerplate</Text>
+      </View>
 
       <InputWrapper>
         <GenericTextInput
