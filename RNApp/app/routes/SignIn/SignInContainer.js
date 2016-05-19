@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { LayoutAnimation } from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
 import SignIn from './SignIn';
 
@@ -9,16 +10,14 @@ class SignInContainer extends Component {
     this.state = {
       email: '',
       password: '',
+      confirmPassword: '',
+      confirmPasswordVisible: false,
       error: null,
     };
   }
 
-  updateEmail(email) {
-    this.setState({ email });
-  }
-
-  updatePassword(password) {
-    this.setState({ password });
+  updateState(data) {
+    this.setState(data);
   }
 
   validInput() {
@@ -46,27 +45,31 @@ class SignInContainer extends Component {
   }
 
   handleCreateAccount() {
-    if (this.validInput()) {
-      const { email, password } = this.state;
-      Accounts.createUser({ email, password }, (err) => {
-        if (err) {
-          this.setState({ error: err.reason });
-        } else {
-          // hack because react-native-meteor doesn't login right away after sign in
-          this.handleSignIn();
-        }
-      });
+    if (this.state.confirmPasswordVisible === false) {
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+      this.setState({ confirmPasswordVisible: true });
+    } else {
+      const { email, password, confirmPassword } = this.state;
+      if (this.validInput() && password === confirmPassword) {
+        Accounts.createUser({ email, password }, (err) => {
+          if (err) {
+            this.setState({ error: err.reason });
+          } else {
+            // hack because react-native-meteor doesn't login right away after sign in
+            this.handleSignIn();
+          }
+        });
+      }
     }
   }
 
   render() {
     return (
       <SignIn
-        updateEmail={this.updateEmail.bind(this)}
-        updatePassword={this.updatePassword.bind(this)}
+        updateState={this.updateState.bind(this)}
         signIn={this.handleSignIn.bind(this)}
         createAccount={this.handleCreateAccount.bind(this)}
-        error={this.state.error}
+        {...this.state}
       />
     );
   }

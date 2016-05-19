@@ -5,10 +5,15 @@ const styles = StyleSheet.create({
   button: {
     paddingVertical: 10,
     paddingHorizontal: 20,
-    backgroundColor: '#A7A7A7',
+    // backgroundColor: '#A7A7A7',
+    backgroundColor: '#39BD98',
     margin: 5,
   },
-  buttonText: {},
+  buttonText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '500',
+  },
 });
 
 const Button = (props) => {
