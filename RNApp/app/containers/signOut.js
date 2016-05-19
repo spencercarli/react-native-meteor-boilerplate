@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Meteor from 'react-native-meteor';
 import Button from '../components/button';
 
 export default class SignOut extends Component {
@@ -12,7 +13,7 @@ export default class SignOut extends Component {
   }
 
   handleSignOut() {
-
+    Meteor.logout()
   }
 
   render() {

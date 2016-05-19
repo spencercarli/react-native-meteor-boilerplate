@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
+import Meteor, { Accounts } from 'react-native-meteor';
 import Button from '../components/button';
 
 export default class SignIn extends Component {
@@ -17,10 +18,10 @@ export default class SignIn extends Component {
     let { email, password } = this.state;
     let valid = false;
     if (email.length && password.length) {
-      this.setState({error: null});
+      this.setState({ error: null });
       valid = true;
     } else {
-      this.setState({error: 'Email and password cannot be empty.'});
+      this.setState({ error: 'Email and password cannot be empty.' });
     }
 
     return valid;
@@ -28,24 +29,29 @@ export default class SignIn extends Component {
 
   handleSignIn() {
     if (this.validInput()) {
-      console.log('TODO: handle sign in');
+      const { email, password } = this.state;
+      Meteor.loginWithPassword(email, password, (err) => {
+        if (err) {
+          this.setState({ error: err.reason });
+        }
+      });
     }
   }
 
   handleCreateAccount() {
     if (this.validInput()) {
-      console.log('TODO: handle create account');
+      const { email, password } = this.state;
+      Accounts.createUser({ email, password }, (err) => {
+        if (err) {
+          this.setState({ error: err.reason });
+        } else {
+          this.handleSignIn(); // hack because react-native-meteor doesn't login right away after sign in
+        }
+      });
     }
   }
 
   render() {
-    let signIn, createAccount;
-
-    if (this.props.connected) {
-      signIn = <Button text="Sign In" onPress={() => this.handleSignIn()} />;
-      createAccount = <Button text="Create Account" onPress={() => this.handleCreateAccount()} />;
-    }
-
     return (
       <View style={styles.container}>
         <Text style={styles.main}>
@@ -71,8 +77,8 @@ export default class SignIn extends Component {
         <Text style={styles.error}>{this.state.error}</Text>
 
         <View style={styles.buttons}>
-          {signIn}
-          {createAccount}
+          <Button text="Sign In" onPress={() => this.handleSignIn()} />
+          <Button text="Create Account" onPress={() => this.handleCreateAccount()} />
         </View>
       </View>
     );
