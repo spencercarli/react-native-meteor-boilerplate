@@ -4,11 +4,20 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "ios": "open ios/RNApp.xcodeproj"
+    "ios": "open ios/RNApp.xcodeproj",
+    "lint": "eslint . --fix"
   },
   "dependencies": {
     "react": "^0.14.8",
     "react-native": "^0.25.1",
     "react-native-meteor": "^1.0.0-rc3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.0.4",
+    "eslint": "^2.10.2",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.0",
+    "eslint-plugin-jsx-a11y": "^1.2.0",
+    "eslint-plugin-react": "^5.1.1"
   }
 }

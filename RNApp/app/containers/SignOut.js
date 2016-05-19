@@ -1,23 +1,36 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Meteor from 'react-native-meteor';
-import Button from '../components/button';
+import Button from '../components/Button';
 
-export default class SignOut extends Component {
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  main: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+});
+
+class SignOut extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      user: null
-    }
+      user: null,
+    };
   }
 
   handleSignOut() {
-    Meteor.logout()
+    Meteor.logout();
   }
 
   render() {
-    let { user } = this.state;
+    const { user } = this.state;
     let email;
 
     if (user) {
@@ -30,21 +43,10 @@ export default class SignOut extends Component {
           Sign Out Screen
         </Text>
         <Text>{email}</Text>
-        <Button text="Sign Out" onPress={() => this.handleSignOut()}/>
+        <Button text="Sign Out" onPress={() => this.handleSignOut()} />
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  main: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
-  }
-});
+export default SignOut;

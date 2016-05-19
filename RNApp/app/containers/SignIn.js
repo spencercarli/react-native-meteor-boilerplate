@@ -1,21 +1,49 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
-import Button from '../components/button';
+import Button from '../components/Button';
 
-export default class SignIn extends Component {
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  main: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginHorizontal: 20,
+    marginVertical: 5,
+    padding: 5,
+  },
+  buttons: {
+    flexDirection: 'row',
+  },
+  error: {
+    color: 'red',
+    height: 20,
+  },
+});
+
+class SignIn extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       email: '',
       password: '',
-      error: null
-    }
+      error: null,
+    };
   }
 
   validInput() {
-    let { email, password } = this.state;
+    const { email, password } = this.state;
     let valid = false;
     if (email.length && password.length) {
       this.setState({ error: null });
@@ -45,7 +73,8 @@ export default class SignIn extends Component {
         if (err) {
           this.setState({ error: err.reason });
         } else {
-          this.handleSignIn(); // hack because react-native-meteor doesn't login right away after sign in
+          // hack because react-native-meteor doesn't login right away after sign in
+          this.handleSignIn();
         }
       });
     }
@@ -63,15 +92,15 @@ export default class SignIn extends Component {
           placeholder="Email"
           autoCapitalize="none"
           autoCorrect={false}
-          onChangeText={(email) => this.setState({email})}
+          onChangeText={(email) => this.setState({ email })}
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
           autoCapitalize="none"
           autoCorrect={false}
-          onChangeText={(password) => this.setState({password})}
-          secureTextEntry={true}
+          onChangeText={(password) => this.setState({ password })}
+          secureTextEntry
         />
 
         <Text style={styles.error}>{this.state.error}</Text>
@@ -85,30 +114,4 @@ export default class SignIn extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  main: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
-  },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginHorizontal: 20,
-    marginVertical: 5,
-    padding: 5
-  },
-  buttons: {
-    flexDirection: 'row'
-  },
-  error: {
-    color: 'red',
-    height: 20
-  }
-});
+export default SignIn;

@@ -7,6 +7,6 @@ if (process.env.NODE_ENV === 'production') {
 const config = {
   env: process.env.NODE_ENV,
   METEOR_URL,
-}
+};
 
 export default config;
