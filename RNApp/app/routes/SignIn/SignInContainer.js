@@ -16,7 +16,7 @@ class SignInContainer extends Component {
     };
   }
 
-  validInput() {
+  validInput(overrideConfirm) {
     const { email, password, confirmPassword, confirmPasswordVisible } = this.state;
     let valid = true;
 
@@ -25,7 +25,7 @@ class SignInContainer extends Component {
       valid = false;
     }
 
-    if (confirmPasswordVisible && password !== confirmPassword) {
+    if (!overrideConfirm && confirmPasswordVisible && password !== confirmPassword) {
       this.setState({ error: 'Passwords do not match.' });
       valid = false;
     }
@@ -38,7 +38,7 @@ class SignInContainer extends Component {
   }
 
   handleSignIn() {
-    if (this.validInput()) {
+    if (this.validInput(true)) {
       const { email, password } = this.state;
       Meteor.loginWithPassword(email, password, (err) => {
         if (err) {
