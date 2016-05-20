@@ -11,7 +11,8 @@
     "react": "^0.14.8",
     "react-native": "^0.25.1",
     "react-native-keyboard-spacer": "^0.2.0",
-    "react-native-meteor": "^1.0.0-rc3"
+    "react-native-meteor": "^1.0.0-rc3",
+    "react-native-tab-navigator": "^0.3.0"
   },
   "devDependencies": {
     "babel-eslint": "^6.0.4",

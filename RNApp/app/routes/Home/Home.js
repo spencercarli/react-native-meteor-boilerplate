@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Button from '../../components/Button';
 import { COLORS } from '../../styles';
 
 const styles = StyleSheet.create({
@@ -19,28 +18,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const SignOut = (props) => {
-  const { user, signOut } = props;
-  let email;
-
-  if (user) {
-    email = user.emails[0].address;
-  }
-
+const Home = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.main}>
-        Profile
+        Home
       </Text>
-      <Text>{email}</Text>
-      <Button text="Sign Out" onPress={signOut} />
     </View>
   );
 };
 
-SignOut.propTypes = {
-  user: React.PropTypes.object,
-  signOut: React.PropTypes.func,
-};
-
-export default SignOut;
+export default Home;
