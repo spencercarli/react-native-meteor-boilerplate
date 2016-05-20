@@ -13,7 +13,9 @@ const styles = StyleSheet.create({
   main: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
+    color: COLORS.headerText,
+    fontWeight: '400',
+    fontStyle: 'italic',
   },
 });
 
