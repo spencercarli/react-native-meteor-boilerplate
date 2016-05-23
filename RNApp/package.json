@@ -8,6 +8,7 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "gravatar-api": "^1.3.4",
     "react": "^0.14.8",
     "react-native": "^0.25.1",
     "react-native-keyboard-spacer": "^0.2.0",

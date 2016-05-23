@@ -33,7 +33,7 @@ const Profile = (props) => {
     <View style={styles.container}>
       <Image style={styles.header} source={headerImage} />
       <View style={styles.body}>
-        <Avatar />
+        <Avatar email={email} />
         <Text>{email}</Text>
         <Button text="Sign Out" onPress={signOut} />
       </View>
