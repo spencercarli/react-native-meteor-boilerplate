@@ -50,6 +50,7 @@ On linux running `ifconfig` will get you a list of your network interfaces along
 - Run `adb devices` to make sure your device shows up
 - Run `adb reverse tcp:8081 tcp:8081`
 - In `RNApp/app/config.js` change `localhost` in `METEOR_URL` to your computer's IP address (see note in "Running on Android" section on how to get your IP Address)
+- Run `react-native run-android`
 
 For further information please reference the [official docs](https://facebook.github.io/react-native/docs/running-on-device-android.html#content).
 
