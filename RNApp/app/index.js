@@ -1,52 +1,35 @@
-import React, { Component } from 'react-native';
+import React from 'react';
+import Meteor, { createContainer } from 'react-native-meteor';
 
-import SignIn from './containers/signIn';
-import SignOut from './containers/signOut';
+import LoggedOut from './layouts/LoggedOut';
+import LoggedIn from './layouts/LoggedIn';
+import Loading from './components/Loading';
+import config from './config';
 
-import ddpClient from './ddp';
+Meteor.connect(config.METEOR_URL);
 
-export default class RNApp extends Component {
-  constructor(props) {
-    super(props);
+const RNApp = (props) => {
+  const { status, user, loggingIn } = props;
 
-    this.state = {
-      connected: false,
-      signedIn: false
-    };
+  if (status.connected === false || loggingIn) {
+    return <Loading />;
+  } else if (user !== null) {
+    return <LoggedIn />;
+  } else {
+    return <LoggedOut />;
   }
+};
 
-  componentWillMount() {
-    ddpClient.connect((error, wasReconnect) => {
-      if (error) {
-        this.setState({connected: false});
-      } else {
-        this.setState({connected: true});
-        ddpClient.loginWithToken((err, res) => {
-          if (!err) this.handleSignedInStatus(true);
-        });
-      }
-    });
-  }
+RNApp.propTypes = {
+  status: React.PropTypes.object,
+  user: React.PropTypes.object,
+  loggingIn: React.PropTypes.bool,
+};
 
-  handleSignedInStatus(status = false) {
-    this.setState({ signedIn: status });
-  }
-
-  render() {
-    let { connected, signedIn } = this.state;
-    if (connected && signedIn) {
-      return (
-        <SignOut
-          changedSignedIn={(status) => this.handleSignedInStatus(status)}
-          />
-      );
-    } else {
-      return (
-        <SignIn
-          connected={connected}
-          changedSignedIn={(status) => this.handleSignedInStatus(status)}
-          />
-      );
-    }
-  }
-}
+export default createContainer(() => {
+  return {
+    status: Meteor.status(),
+    user: Meteor.user(),
+    loggingIn: Meteor.loggingIn(),
+  };
+}, RNApp);

@@ -1,63 +1,60 @@
-# React Native - Meteor Boilerplate
+# React Native Meteor Boilerplate
 
-A starting point for integrating a React Native app with a Meteor app. I've used this file structure in large, multi-developer projects.
+This is a simple way to get started building an app with React Native and Meteor. It is opinionated to make it easy for people to start but if you have your own way of doing things it's very easy to swap things out and move them around however you see fit.
 
-_Note #1:_ This project only specifies an opinion on the *React Native* project architecture.
+As it currently stands this project is only focused on configuring the React Native project. The Meteor side is up to you. For thoughts on how to structure your Meteor App I would suggest you read the [Meteor Guide](http://guide.meteor.com/) and the [Mantra spec](http://mantrajs.com/).
 
-## Getting started with Meteor
+## Getting Started
 
-1. Make sure you have [Meteor](https://www.meteor.com/) installed.
-2. After cloning the repo, `cd MeteorApp/ && meteor`
+- [Install Meteor](https://www.meteor.com/install)
+- [Install React Native](https://facebook.github.io/react-native/docs/getting-started.html#content)
+- Clone Repo: `git clone https://github.com/spencercarli/react-native-meteor-boilerplate.git`
 
+## Running on iOS Simulator
 
-## Getting started with React Native
+_Note_: You must be on a Mac for this.
 
-1. Make sure you have [React Native](https://facebook.github.io/react-native/) installed.
-2. After cloning the repo, `cd RNApp/ && npm install`
+You've got a few ways you can run the app for iOS:
 
-## Running on iOS
+- From the `RNApp` directory run `react-native run-ios`
+- From the `RNApp` directory run `npm run ios` then start the project in Xcode
 
-### In the Simulator
+## Running on iOS Device
 
-From the `RNApp/` directory you can run `npm run ios`. This will start the react native packager and open up Xcode. The default configurations in `app/config.js` should work fine for you. The press the play button in Xcode.
+_Note_: You must be on a Mac for this.
 
-### On a Device
+- Get the IP address of your machine (you can run `ipconfig getifaddr en1` to do so)
+- In `RNApp/ios/RNApp/AppDelegate.m` change `localhost` to your machine's IP address
+- In `RNApp/app/config.js` change `localhost` to your machine's IP address
+- Plug your device into your computer (make sure it's on the same network)
+- Open the project in Xcode
+- Select your device in Xcode and press "Build and run"
 
-In `RNApp/ios/RNApp/AppDelegate.m` change the the `jsCodeLocation` line and swap out `localhost` for your machine's IP Address. You can get your IP Address by running `ipconfig getifaddr en1`.
+For further information please reference the [official docs](https://facebook.github.io/react-native/docs/running-on-device-ios.html#content).
 
-You'll also have to change the `host` option in `app/config.js` to be your machine's IP Address.
+## Running on Android Simulator
 
-Then `npm run ios` to open Xcode.
-
-Then plug your phone into your machine and select your device in Xcode. Press the play button in Xcode. Make sure you device is unlocked
-
-## Running on Android
-
-### In the Simulator
-
-First you'll have to change the `host` option in `RNApp/app/config.js` to your Meteor server's IP address. While developing this will likely be your machine. 
+- Get the IP address of your machine
+- In `RNApp/app/config.js` change `localhost` to your machine's IP address
+- Make sure you have an emulator configured and running.
+- From the `RNApp` directory run `react-native run-android`
 
 On OSX you can get your IP address by running `ipconfig getifaddr en1` in a terminal window.
 
-On linux running `ifconfig` will get you a list of your network interfaces along with their IP addresses. For the stock Google simulator you will want to use the IP of your active network connection (probably `eth0` or `wlan0`). If you are using the Genymotion simulator, it runs in a Virtual Box VM with a Host-only network interface. You will want to use the IP address of this network which may look like `vboxnet0` under ifconfig.
+On linux running `ifconfig` will get you a list of your network interfaces along with their IP addresses. For the stock Google simulator you will want to use the IP of your active network connection (probably `eth0` or `wlan0`). If you are using the Genymotion simulator, it runs in a Virtual Box VM with a Host-only network interface. You will want to use the IP address of this network which may look like vboxnet0 under ifconfig.
 
+## Running on Android Device
 
-Once you've done that (and following successful completion of the [React Native Android Installation](https://facebook.github.io/react-native/docs/android-setup.html#content)) you can run `react-native run-android` to get the app running.
+- Make sure [USB Debugging is enabled](https://facebook.github.io/react-native/docs/running-on-device-android.html#prerequisite-usb-debugging)
+- Plug your device into your computer
+- Run `adb devices` to make sure your device shows up
+- Run `adb reverse tcp:8081 tcp:8081`
+- In `RNApp/app/config.js` change `localhost` in `METEOR_URL` to your computer's IP address (see note in "Running on Android" section on how to get your IP Address)
+- Run `react-native run-android`
 
-_Note:_ You have to have the android simulator running before running `react-native run-android`.
+For further information please reference the [official docs](https://facebook.github.io/react-native/docs/running-on-device-android.html#content).
 
-### On a Device
-
-#### Enable USB Debugging
-
-Enable USB Debugging on your phone. If already connected to your computer unplug and replug the USB connection afterwards. Android 5 steps below:
-
-> Settings > About Phone > Build number > Tap it 7 times to become developer;
-> Settings > Developer Options > USB Debugging.
-
-#### For Linux
-
-##### Setup Device on Linux
+## Linux Setup for Android Dev
 
 Configure how the device will connect to the meteor server. See [running android on a device](https://facebook.github.io/react-native/docs/running-on-device-android.html) to pick from the options.
 
@@ -73,24 +70,48 @@ Check that your device is properly connecting to ADB, the Android Debug Bridge, 
 
 _Note:_ You should have only one active ADB connection. If you have a simulator running you should close it before proceeding.
 
-These steps are abstracted from the pages [running on device](https://facebook.github.io/react-native/docs/running-on-device-android.html) and [getting started](https://facebook.github.io/react-native/docs/getting-started-linux.html#setting-up-an-android-device) on linux. 
+These steps are abstracted from the pages [running on device](https://facebook.github.io/react-native/docs/running-on-device-android.html) and [getting started](https://facebook.github.io/react-native/docs/getting-started-linux.html#setting-up-an-android-device) on linux.
 
-##### Install App and Run on Device for Linux
+## Project Structure
 
-Build and install on your device by running `react-native run-android`
+The following directories are all in the `RNApp` directory.
 
-Launch the react server by running `react-native start` and then launch the app on your phone.
+**app/components**
 
-## Project Organization
+This directory will store components that can be used in numerous places throughout the app (like a button). The goal here is to make these components stateless. The only state they should hold is UI state. Design this components to be driven from props as often as possible.
 
-If you're interested in seeing why the React Native project is organized the way it is please [refer to this document](/docs/react-native-project-organization.md).
+**app/helpers**
 
-The Meteor project is completely up to you at this point.
+Helpers are general helpers that you may want to use throughout your app. Things like string formatting, validation, etc. Before you start writing these make sure to check out a library like [lodash](https://lodash.com/) which likely has much of what you need already.
 
-## Technologies Used
+**app/images**
 
-- [Meteor](https://www.meteor.com/)
-- [React Native](https://facebook.github.io/react-native/)
-- [Node DDP Client](https://github.com/spencercarli/node-ddp-client)
-- [EJSON](https://github.com/primus/ejson)
-- [lodash](https://lodash.com/)
+Like the components directory this is where you would want to store any images that may be used in multiple places throughout your app. For example a logo or an icon.
+
+**app/layouts**
+
+A user has different states and possibly different roles in an application. For example a logged in user is going to see something different than a logged in user. An Airbnb host may see something different than an Airbnb guest. Layouts should be minimal and hold minimal state (like which is the active tab). They're composed of routes.
+
+**app/routes**
+
+Routes are the meat of the application. This is where your business logic will likely go and where many components will go. They should be relatively self contained - holding the containers, components, and necessary assets for that route. Generally a route has a minimum of 3 files: an `index.js`, `Component.js`, and `ComponentContainer.js`.
+
+The `ComponentContainer.js` does all of the data fetching/formatting/etc. It then passes that data down to `Component.js` which actually displays this data. `Component.js` should be a "dumb" component that holds, if any, only UI state. Lastly `index.js` is used for exporting anything that a layout or another route may need to know.
+
+This may seem overkill for a boilerplate but I've found this structure scales well as a project gets larger and keeps things relatively easy to understand and compartmentalized so that when you make changes to a route those changes are minimal (if at all) to other parts of the application that depend on them.
+
+**app/styles**
+
+Like components or images these are going to be your global styles. Keeping the various colors used throughout your app is a great application for this directory.
+
+**app/config.js**
+
+Store any configuration items that may be needed throughout the app. It's a good centralized place that you can store data that may drive different pieces of your app. Good examples are your server url, feature toggles, and development toggles.
+
+**app/index.js**
+
+The entry point of our application, this is what the default `index.ios.js` and `index.android.js` will call. It handles initializing our Meteor connection and determining which layout should be shown.
+
+## Questions?
+
+If you have any questions please open an issue. Thanks!
