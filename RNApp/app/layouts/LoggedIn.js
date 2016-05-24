@@ -1,8 +1,10 @@
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
-import Profile, { Icon as ProfileIcon } from '../routes/Profile';
-import Home, { Icon as HomeIcon } from '../routes/Home';
+import { Icon as ProfileIcon } from '../routes/Profile';
+import { Icon as HomeIcon } from '../routes/Home';
+import ExNavigator from '@exponent/react-native-navigator';
+import Routes from '../routes';
 
 const styles = StyleSheet.create({
   icon: {
@@ -23,8 +25,12 @@ class LoggedInLayout extends React.Component {
     };
   }
 
-  renderTabItem(title, Component, Icon) {
+  renderTabItem(title, initialRoute, Icon) {
     const { selectedTab } = this.state;
+    const sceneStyle = [];
+    if (initialRoute.showNavigationBar !== false) {
+      sceneStyle.push({ paddingTop: 64 });
+    }
 
     return (
       <TabNavigator.Item
@@ -39,7 +45,12 @@ class LoggedInLayout extends React.Component {
         )}
         onPress={() => this.setState({ selectedTab: title })}
       >
-        <Component />
+        <ExNavigator
+          initialRoute={initialRoute}
+          style={{ flex: 1 }}
+          sceneStyle={sceneStyle}
+          showNavigationBar={initialRoute.showNavigationBar}
+        />
       </TabNavigator.Item>
     );
   }
@@ -47,8 +58,8 @@ class LoggedInLayout extends React.Component {
   render() {
     return (
       <TabNavigator>
-        {this.renderTabItem('Home', Home, HomeIcon)}
-        {this.renderTabItem('Profile', Profile, ProfileIcon)}
+        {this.renderTabItem('Home', Routes.getHomeRoute(), HomeIcon)}
+        {this.renderTabItem('Profile', Routes.getProfileRoute(), ProfileIcon)}
       </TabNavigator>
     );
   }

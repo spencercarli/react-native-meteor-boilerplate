@@ -8,6 +8,7 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "@exponent/react-native-navigator": "^0.4.7",
     "gravatar-api": "^1.3.4",
     "react": "^0.14.8",
     "react-native": "^0.25.1",
