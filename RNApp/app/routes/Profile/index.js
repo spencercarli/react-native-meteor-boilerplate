@@ -1,6 +1,6 @@
-import SignOutContainer from './ProfileContainer';
-import SignOut from './Profile';
+import ProfileContainer from './ProfileContainer';
+import Profile from './Profile';
 import Icon from './user-icon.png';
 
-export { SignOut, Icon };
-export default SignOutContainer;
+export { Profile, Icon };
+export default ProfileContainer;

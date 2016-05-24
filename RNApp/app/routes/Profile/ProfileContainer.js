@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Meteor, { createContainer } from 'react-native-meteor';
-import SignOut from './Profile';
+import Profile from './Profile';
 
 class ProfileContainer extends Component {
   handleSignOut() {
@@ -11,7 +11,7 @@ class ProfileContainer extends Component {
     const { user } = this.props;
 
     return (
-      <SignOut
+      <Profile
         user={user}
         signOut={this.handleSignOut.bind(this)}
       />
