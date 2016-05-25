@@ -19,7 +19,7 @@ _Note_: You must be on a Mac for this.
 You've got a few ways you can run the app for iOS:
 
 - From the `RNApp` directory run `react-native run-ios`
-- From the `RNApp` directory run `npm run ios` then start the project in Xcode
+- From the `RNApp` directory run `npm install` followed by `npm run ios` then start the project in Xcode
 
 ## Running on iOS Device
 
