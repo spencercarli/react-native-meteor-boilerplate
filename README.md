@@ -4,6 +4,8 @@ This is a simple way to get started building an app with React Native and Meteor
 
 As it currently stands this project is only focused on configuring the React Native project. The Meteor side is up to you. For thoughts on how to structure your Meteor App I would suggest you read the [Meteor Guide](http://guide.meteor.com/) and the [Mantra spec](http://mantrajs.com/).
 
+You can checkout a _very_ quick walkthrough of the project [here](https://www.youtube.com/watch?v=vM4axvopnJc).
+
 ## Getting Started
 
 - [Install Meteor](https://www.meteor.com/install)
