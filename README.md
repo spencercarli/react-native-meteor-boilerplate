@@ -11,6 +11,7 @@ You can checkout a _very_ quick walkthrough of the project [here](https://www.yo
 - [Install Meteor](https://www.meteor.com/install)
 - [Install React Native](https://facebook.github.io/react-native/docs/getting-started.html#content)
 - Clone Repo: `git clone https://github.com/spencercarli/react-native-meteor-boilerplate.git`
+- From the `RNApp` directory run `npm install`
 
 ## Running on iOS Simulator
 
@@ -19,7 +20,7 @@ _Note_: You must be on a Mac for this.
 You've got a few ways you can run the app for iOS:
 
 - From the `RNApp` directory run `react-native run-ios`
-- From the `RNApp` directory run `npm install` followed by `npm run ios` then start the project in Xcode
+- From the `RNApp` directory run `npm run ios` then start the project in Xcode
 
 ## Running on iOS Device
 
