@@ -92,7 +92,7 @@ Like the components directory this is where you would want to store any images t
 
 **app/layouts**
 
-A user has different states and possibly different roles in an application. For example a logged in user is going to see something different than a logged in user. An Airbnb host may see something different than an Airbnb guest. Layouts should be minimal and hold minimal state (like which is the active tab). They're composed of routes.
+A user has different states and possibly different roles in an application. For example a logged in user is going to see something different than a logged out user. An Airbnb host may see something different than an Airbnb guest. Layouts should be minimal and hold minimal state (like which is the active tab). They're composed of routes.
 
 **app/routes**
 
