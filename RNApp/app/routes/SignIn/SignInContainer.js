@@ -3,7 +3,7 @@ import { LayoutAnimation } from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
 import SignIn from './SignIn';
 
-class SignInContainer extends Component {
+export default class SignInContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -77,5 +77,3 @@ class SignInContainer extends Component {
     );
   }
 }
-
-export default SignInContainer;
