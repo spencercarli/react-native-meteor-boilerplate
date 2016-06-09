@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Image, StyleSheet } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import { Icon as ProfileIcon } from '../routes/Profile';
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class LoggedInLayout extends React.Component {
+export default class LoggedInLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -64,5 +64,3 @@ class LoggedInLayout extends React.Component {
     );
   }
 }
-
-export default LoggedInLayout;
