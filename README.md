@@ -17,6 +17,8 @@ You can checkout a _very_ quick walkthrough of the project [here](https://www.yo
 
 _Note_: You must be on a Mac for this.
 
+- Be sure your Meteor app is running: In the ```MeteorApp``` directory, type ```meteor```
+ 
 You've got a few ways you can run the app for iOS:
 
 - From the `RNApp` directory run `react-native run-ios`
