@@ -1,49 +1,55 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {MeteorListView} from 'react-native-meteor';
+import React, { PropTypes } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { MeteorListView } from 'react-native-meteor';
 import Loading from '../../components/Loading';
 
-import {COLORS, GRID_SETTINGS} from '../../styles';
+import { COLORS, GRID_SETTINGS } from '../../styles';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: COLORS.background
+    flex: 1,
+    backgroundColor: COLORS.background,
   },
   main: {
     fontSize: 20,
     textAlign: 'center',
     color: COLORS.headerText,
     fontWeight: '400',
-    fontStyle: 'italic'
-  },
-  list: {
-    flexDirection: 'row',
-    flexWrap: 'wrap'
+    fontStyle: 'italic',
   },
   item: {
     backgroundColor: COLORS.buttonBackground,
     color: COLORS.headerText,
     margin: GRID_SETTINGS.margin,
-    width: GRID_SETTINGS.width,
-    padding: 5
-  }
+    padding: 5,
+    flex: 1,
+  },
 });
 
 const renderRow = (detail) => {
   return (
     <Text style={styles.item}>{detail.name}</Text>
   );
-}
+};
 
-const Details = (props) => {
-  const {detailsReady} = props;
+const Details = ({ detailsReady }) => {
+  if (!detailsReady) {
+    return <Loading />;
+  }
 
-  return (!detailsReady
-    ? <Loading/>
-    : <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <Text style={styles.main}>Details List</Text>
-      <MeteorListView contentContainerStyle={styles.list} collection="details" renderRow={renderRow}/>
-    </View>);
-}
+      <MeteorListView
+        collection="details"
+        renderRow={renderRow}
+      />
+    </View>
+  );
+};
+
+Details.propTypes = {
+  detailsReady: PropTypes.bool,
+};
 
 export default Details;

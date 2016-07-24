@@ -1,24 +1,22 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 import Meteor, { createContainer } from 'react-native-meteor';
 import Details from './Details';
 
-class DetailsContainer extends Component {
+const DetailsContainer = ({ detailsReady }) => {
+  return (
+    <Details
+      detailsReady={detailsReady}
+    />
+  );
+};
 
-  render() {
-    const {detailsReady } = this.props;
-
-    return (
-      <Details
-        detailsReady = { detailsReady }
-      />
-    );
-  }
-}
+DetailsContainer.propTypes = {
+  detailsReady: PropTypes.bool,
+};
 
 export default createContainer(() => {
   const handle = Meteor.subscribe('details-list');
-
   return {
     detailsReady: handle.ready(),
   };
-},DetailsContainer);
+}, DetailsContainer);
