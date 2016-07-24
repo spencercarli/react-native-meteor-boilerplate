@@ -2,9 +2,7 @@ import React from 'react';
 import {
   View,
   StyleSheet,
-  Platform,
-  ProgressBarAndroid,
-  ActivityIndicatorIOS,
+  ActivityIndicator,
 } from 'react-native';
 import { COLORS } from '../styles';
 
@@ -17,39 +15,19 @@ const styles = StyleSheet.create({
   },
 });
 
-const IOSLoading = (props) => (
-  <ActivityIndicatorIOS
-    animating
-    size={props.size}
-    {...props}
-  />
-);
-
-const AndroidLoading = (props) => (
-  <ProgressBarAndroid
-    style={{
-      height: props.size === 'large' ? 40 : 20,
-    }}
-    styleAttr="Inverse"
-    {...props}
-  />
-);
-
 const Loading = (props) => {
-  let LoadingComponent = AndroidLoading;
-
-  if (Platform.OS === 'ios') {
-    LoadingComponent = IOSLoading;
-  }
-
   return (
     <View style={styles.container}>
-      <LoadingComponent {...props} />
+      <ActivityIndicator
+        animating
+        size={props.size}
+        {...props}
+      />
     </View>
   );
 };
 
-Loading.propTypes = IOSLoading.propTypes = AndroidLoading.propTypes = {
+Loading.propTypes = {
   size: React.PropTypes.string,
 };
 
