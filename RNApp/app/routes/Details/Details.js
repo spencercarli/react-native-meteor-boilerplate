@@ -7,6 +7,7 @@ import { COLORS, GRID_SETTINGS } from '../../styles';
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: COLORS.background,
   },
   main: {
@@ -16,16 +17,12 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     fontStyle: 'italic',
   },
-  list: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
   item: {
     backgroundColor: COLORS.buttonBackground,
     color: COLORS.headerText,
     margin: GRID_SETTINGS.margin,
-    width: GRID_SETTINGS.width,
     padding: 5,
+    flex: 1,
   },
 });
 
@@ -44,7 +41,6 @@ const Details = ({ detailsReady }) => {
     <View style={styles.container}>
       <Text style={styles.main}>Details List</Text>
       <MeteorListView
-        contentContainerStyle={styles.list}
         collection="details"
         renderRow={renderRow}
       />
