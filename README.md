@@ -79,43 +79,7 @@ These steps are abstracted from the pages [running on device](https://facebook.g
 
 ## Project Structure
 
-The following directories are all in the `RNApp` directory.
-
-**app/components**
-
-This directory will store components that can be used in numerous places throughout the app (like a button). The goal here is to make these components stateless. The only state they should hold is UI state. Design this components to be driven from props as often as possible.
-
-**app/helpers**
-
-Helpers are general helpers that you may want to use throughout your app. Things like string formatting, validation, etc. Before you start writing these make sure to check out a library like [lodash](https://lodash.com/) which likely has much of what you need already.
-
-**app/images**
-
-Like the components directory this is where you would want to store any images that may be used in multiple places throughout your app. For example a logo or an icon.
-
-**app/layouts**
-
-A user has different states and possibly different roles in an application. For example a logged in user is going to see something different than a logged out user. An Airbnb host may see something different than an Airbnb guest. Layouts should be minimal and hold minimal state (like which is the active tab). They're composed of routes.
-
-**app/routes**
-
-Routes are the meat of the application. This is where your business logic will likely go and where many components will go. They should be relatively self contained - holding the containers, components, and necessary assets for that route. Generally a route has a minimum of 3 files: an `index.js`, `Component.js`, and `ComponentContainer.js`.
-
-The `ComponentContainer.js` does all of the data fetching/formatting/etc. It then passes that data down to `Component.js` which actually displays this data. `Component.js` should be a "dumb" component that holds, if any, only UI state. Lastly `index.js` is used for exporting anything that a layout or another route may need to know.
-
-This may seem overkill for a boilerplate but I've found this structure scales well as a project gets larger and keeps things relatively easy to understand and compartmentalized so that when you make changes to a route those changes are minimal (if at all) to other parts of the application that depend on them.
-
-**app/styles**
-
-Like components or images these are going to be your global styles. Keeping the various colors used throughout your app is a great application for this directory.
-
-**app/config.js**
-
-Store any configuration items that may be needed throughout the app. It's a good centralized place that you can store data that may drive different pieces of your app. Good examples are your server url, feature toggles, and development toggles.
-
-**app/index.js**
-
-The entry point of our application, this is what the default `index.ios.js` and `index.android.js` will call. It handles initializing our Meteor connection and determining which layout should be shown.
+Check out [this article](https://medium.com/@spencer_carli/organizing-a-react-native-project-9514dfadaa0#.361gf1awu) for an overview of the `RNApp` directory.
 
 ## Questions?
 
