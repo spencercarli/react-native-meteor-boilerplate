@@ -3,6 +3,7 @@ import { Text, View, Image } from 'react-native';
 import Button from '../../components/Button';
 import Avatar from '../../components/Avatar';
 import images from '../../config/images';
+import { capitalize } from '../../lib/string';
 import styles from './styles';
 
 const Profile = (props) => {
@@ -18,7 +19,7 @@ const Profile = (props) => {
       <Image style={styles.header} source={images.profileHeader} />
       <View style={styles.body}>
         <Avatar email={email} />
-        <Text>{email}</Text>
+        <Text>{capitalize(email)}</Text>
         <Button text="Sign Out" onPress={signOut} />
       </View>
     </View>
