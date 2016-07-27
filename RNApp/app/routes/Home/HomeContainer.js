@@ -2,14 +2,10 @@ import React from 'react';
 import Home from './Home';
 import Routes from '../../config/routes';
 
-const onDetailsPress = (navigator) => {
-  return navigator.push(Routes.getDetailsRoute());
-};
-
 const HomeContainer = (props) => {
   return (
     <Home
-      onDetailsPress={() => onDetailsPress(props.navigator)}
+      onDetailsPress={() => props.navigator.push(Routes.getDetailsRoute())}
     />
   );
 };

@@ -4,12 +4,6 @@ import { MeteorListView } from 'react-native-meteor';
 import Loading from '../../components/Loading';
 import styles from './styles';
 
-const renderRow = (detail) => {
-  return (
-    <Text style={styles.item}>{detail.name}</Text>
-  );
-};
-
 const Details = ({ detailsReady }) => {
   if (!detailsReady) {
     return <Loading />;
@@ -20,7 +14,7 @@ const Details = ({ detailsReady }) => {
       <Text style={styles.main}>Details List</Text>
       <MeteorListView
         collection="details"
-        renderRow={renderRow}
+        renderRow={(detail) => <Text style={styles.item}>{detail.name}</Text>}
       />
     </View>
   );

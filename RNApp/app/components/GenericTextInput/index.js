@@ -1,3 +1,5 @@
 import GenericTextInput from './GenericTextInput';
-export * from './GenericTextInput';
+import InputWrapper from './InputWrapper';
+
+export { InputWrapper };
 export default GenericTextInput;
