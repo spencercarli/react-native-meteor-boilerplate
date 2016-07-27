@@ -3,8 +3,8 @@ import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import Button from '../../components/Button';
 import GenericTextInput, { InputWrapper } from '../../components/GenericTextInput';
-import { colors as COLORS } from '../../config/styles';
-import Logo from '../../images/rn-logo.png';
+import { colors } from '../../config/styles';
+import images from '../../config/images';
 
 const window = Dimensions.get('window');
 
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   buttons: {
     flexDirection: 'row',
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   errorText: {
-    color: COLORS.errorText,
+    color: colors.errorText,
     fontSize: 14,
   },
   header: {
@@ -38,13 +38,13 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 30,
-    color: COLORS.headerText,
+    color: colors.headerText,
     fontWeight: '600',
     fontStyle: 'italic',
   },
   subHeaderText: {
     fontSize: 20,
-    color: COLORS.headerText,
+    color: colors.headerText,
     fontWeight: '400',
     fontStyle: 'italic',
   },
@@ -58,7 +58,7 @@ const SignIn = (props) => {
       <View style={styles.header}>
         <Image
           style={styles.logo}
-          source={Logo}
+          source={images.logo}
         />
 
         <Text style={styles.headerText}>React Native Meteor</Text>

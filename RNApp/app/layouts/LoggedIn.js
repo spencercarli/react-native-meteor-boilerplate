@@ -1,10 +1,9 @@
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
-import { Icon as ProfileIcon } from '../routes/Profile';
-import { Icon as HomeIcon } from '../routes/Home';
 import ExNavigator from '@exponent/react-native-navigator';
 import Routes from '../config/routes';
+import images from '../config/images';
 
 const styles = StyleSheet.create({
   icon: {
@@ -58,8 +57,8 @@ class LoggedInLayout extends React.Component {
   render() {
     return (
       <TabNavigator>
-        {this.renderTabItem('Home', Routes.getHomeRoute(), HomeIcon)}
-        {this.renderTabItem('Profile', Routes.getProfileRoute(), ProfileIcon)}
+        {this.renderTabItem('Home', Routes.getHomeRoute(), images.icons.home)}
+        {this.renderTabItem('Profile', Routes.getProfileRoute(), images.icons.profile)}
       </TabNavigator>
     );
   }

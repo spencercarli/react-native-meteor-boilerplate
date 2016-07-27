@@ -1,6 +1,5 @@
 import ProfileContainer from './ProfileContainer';
 import Profile from './Profile';
-import Icon from './user-icon.png';
 
-export { Profile, Icon };
+export { Profile };
 export default ProfileContainer;

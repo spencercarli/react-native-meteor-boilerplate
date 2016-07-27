@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import Button from '../../components/Button';
 import Avatar from '../../components/Avatar';
 import { colors } from '../../config/styles';
-import headerImage from './header-image.png';
+import images from '../../config/images';
 
 const window = Dimensions.get('window');
 const styles = StyleSheet.create({
@@ -31,7 +31,7 @@ const Profile = (props) => {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.header} source={headerImage} />
+      <Image style={styles.header} source={images.profileHeader} />
       <View style={styles.body}>
         <Avatar email={email} />
         <Text>{email}</Text>

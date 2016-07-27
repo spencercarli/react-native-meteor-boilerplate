@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 import gravatar from 'gravatar-api';
-import placeholderImage from './placeholder.png';
+import images from '../../config/images';
 
 const size = 100;
 const styles = StyleSheet.create({
@@ -25,7 +25,7 @@ const Avatar = (props) => {
     <Image
       style={styles.avatar}
       source={{ uri }}
-      defaultSource={placeholderImage}
+      defaultSource={images.avatarPlaceholder}
     />
   );
 };
