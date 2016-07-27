@@ -4,9 +4,9 @@ if (process.env.NODE_ENV === 'production') {
   METEOR_URL = ''; // your production server url
 }
 
-const config = {
+export const settings = {
   env: process.env.NODE_ENV,
   METEOR_URL,
 };
 
-export default config;
+export default settings;

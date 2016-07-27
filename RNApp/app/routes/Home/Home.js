@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { COLORS } from '../../styles';
+import { colors } from '../../config/styles';
 import Button from '../../components/Button';
 
 const styles = StyleSheet.create({
@@ -8,12 +8,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   main: {
     fontSize: 20,
     textAlign: 'center',
-    color: COLORS.headerText,
+    color: colors.headerText,
     fontWeight: '400',
     fontStyle: 'italic',
   },

@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from './Home';
-import Routes from '../';
+import Routes from '../../config/routes';
 
 const onDetailsPress = (navigator) => {
   return navigator.push(Routes.getDetailsRoute());

@@ -4,14 +4,14 @@ import {
   StyleSheet,
   ActivityIndicator,
 } from 'react-native';
-import { COLORS } from '../styles';
+import { colors } from '../config/styles';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
 });
 

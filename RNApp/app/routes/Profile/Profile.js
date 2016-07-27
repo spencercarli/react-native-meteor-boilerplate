@@ -2,14 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import Button from '../../components/Button';
 import Avatar from '../../components/Avatar';
-import { COLORS } from '../../styles';
+import { colors } from '../../config/styles';
 import headerImage from './header-image.png';
 
 const window = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   header: {
     width: window.width,

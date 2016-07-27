@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import Button from '../../components/Button';
 import GenericTextInput, { InputWrapper } from '../../components/GenericTextInput';
-import { COLORS } from '../../styles';
+import { colors as COLORS } from '../../config/styles';
 import Logo from '../../images/rn-logo.png';
 
 const window = Dimensions.get('window');

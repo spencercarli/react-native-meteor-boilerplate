@@ -9,7 +9,7 @@ GRID_SETTINGS.width = (width - 2 * GRID_ITEMS_PER_ROW * GRID_SETTINGS.margin) / 
 
 export { GRID_SETTINGS };
 
-export const COLORS = {
+export const colors = {
   background: '#F5F2F9',
   errorText: '#FA3256',
   headerText: '#444444',

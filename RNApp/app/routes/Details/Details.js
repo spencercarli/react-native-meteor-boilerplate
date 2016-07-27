@@ -3,23 +3,23 @@ import { StyleSheet, Text, View } from 'react-native';
 import { MeteorListView } from 'react-native-meteor';
 import Loading from '../../components/Loading';
 
-import { COLORS, GRID_SETTINGS } from '../../styles';
+import { colors, GRID_SETTINGS } from '../../config/styles';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   main: {
     fontSize: 20,
     textAlign: 'center',
-    color: COLORS.headerText,
+    color: colors.headerText,
     fontWeight: '400',
     fontStyle: 'italic',
   },
   item: {
-    backgroundColor: COLORS.buttonBackground,
-    color: COLORS.headerText,
+    backgroundColor: colors.buttonBackground,
+    color: colors.headerText,
     margin: GRID_SETTINGS.margin,
     padding: 5,
     flex: 1,

@@ -1,9 +1,9 @@
 import React from 'react';
-import Home from './Home';
-import Details from './Details';
-import Profile from './Profile';
+import Home from '../routes/Home';
+import Details from '../routes/Details';
+import Profile from '../routes/Profile';
 
-const Routes = {
+export const routes = {
   getHomeRoute() {
     return {
       renderScene(navigator) {
@@ -37,4 +37,4 @@ const Routes = {
   },
 };
 
-export default Routes;
+export default routes;
