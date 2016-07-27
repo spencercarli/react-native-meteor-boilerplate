@@ -1,54 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import Button from '../../components/Button';
 import GenericTextInput, { InputWrapper } from '../../components/GenericTextInput';
-import { colors } from '../../config/styles';
 import images from '../../config/images';
-
-const window = Dimensions.get('window');
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colors.background,
-  },
-  buttons: {
-    flexDirection: 'row',
-  },
-  error: {
-    height: 28,
-    justifyContent: 'center',
-    width: window.width,
-    alignItems: 'center',
-  },
-  errorText: {
-    color: colors.errorText,
-    fontSize: 14,
-  },
-  header: {
-    marginBottom: 25,
-    alignItems: 'center',
-  },
-  logo: {
-    width: 125,
-    height: 125,
-  },
-  headerText: {
-    fontSize: 30,
-    color: colors.headerText,
-    fontWeight: '600',
-    fontStyle: 'italic',
-  },
-  subHeaderText: {
-    fontSize: 20,
-    color: colors.headerText,
-    fontWeight: '400',
-    fontStyle: 'italic',
-  },
-});
+import styles from './styles';
 
 const SignIn = (props) => {
   const { updateState, signIn, createAccount, error, confirmPasswordVisible } = props;

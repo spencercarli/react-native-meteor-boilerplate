@@ -1,25 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import Button from '../../components/Button';
 import Avatar from '../../components/Avatar';
-import { colors } from '../../config/styles';
 import images from '../../config/images';
-
-const window = Dimensions.get('window');
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-  },
-  header: {
-    width: window.width,
-    height: window.height * 0.4,
-  },
-  body: {
-    marginTop: -50,
-    alignItems: 'center',
-  },
-});
+import styles from './styles';
 
 const Profile = (props) => {
   const { user, signOut } = props;

@@ -1,19 +1,6 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  ActivityIndicator,
-} from 'react-native';
-import { colors } from '../config/styles';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colors.background,
-  },
-});
+import { View, ActivityIndicator } from 'react-native';
+import styles from './styles';
 
 const Loading = (props) => {
   return (
