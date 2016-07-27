@@ -1,23 +1,31 @@
-import { StyleSheet } from 'react-native';
-import { colors, GRID_SETTINGS } from '../../config/styles';
+import { StyleSheet, Dimensions } from 'react-native';
+import { colors } from '../../config/styles';
+
+const window = Dimensions.get('window');
+const MARGIN_HORIZONTAL = 10;
+const cardSize = (window.width - MARGIN_HORIZONTAL * 4) / 2;
 
 export default styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
   },
-  main: {
-    fontSize: 20,
-    textAlign: 'center',
-    color: colors.headerText,
-    fontWeight: '400',
-    fontStyle: 'italic',
+  list: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
   },
   item: {
     backgroundColor: colors.buttonBackground,
-    color: colors.headerText,
-    margin: GRID_SETTINGS.margin,
-    padding: 5,
-    flex: 1,
+    color: colors.buttonText,
+    width: cardSize,
+    height: cardSize,
+    marginHorizontal: MARGIN_HORIZONTAL,
+    marginVertical: 5,
+    paddingTop: cardSize / 2.3,
+    fontSize: 16,
+    fontWeight: '500',
+    textAlign: 'center',
+    alignItems: 'center',
   },
 });
