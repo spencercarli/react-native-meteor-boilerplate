@@ -30,7 +30,7 @@ _Note_: You must be on a Mac for this.
 
 - Get the IP address of your machine (you can run `ipconfig getifaddr en1` to do so)
 - In `RNApp/ios/RNApp/AppDelegate.m` change `localhost` to your machine's IP address
-- In `RNApp/app/config.js` change `localhost` to your machine's IP address
+- In `RNApp/app/config/settings.js` change `localhost` to your machine's IP address
 - Plug your device into your computer (make sure it's on the same network)
 - Open the project in Xcode
 - Select your device in Xcode and press "Build and run"
@@ -40,7 +40,7 @@ For further information please reference the [official docs](https://facebook.gi
 ## Running on Android Simulator
 
 - Get the IP address of your machine
-- In `RNApp/app/config.js` change `localhost` to your machine's IP address
+- In `RNApp/app/config/settings.js` change `localhost` to your machine's IP address
 - Make sure you have an emulator configured and running.
 - From the `RNApp` directory run `react-native run-android`
 
@@ -54,7 +54,7 @@ On linux running `ifconfig` will get you a list of your network interfaces along
 - Plug your device into your computer
 - Run `adb devices` to make sure your device shows up
 - Run `adb reverse tcp:8081 tcp:8081`
-- In `RNApp/app/config.js` change `localhost` in `METEOR_URL` to your computer's IP address (see note in "Running on Android" section on how to get your IP Address)
+- In `RNApp/app/config/settings.js` change `localhost` in `METEOR_URL` to your computer's IP address (see note in "Running on Android" section on how to get your IP Address)
 - Run `react-native run-android`
 
 For further information please reference the [official docs](https://facebook.github.io/react-native/docs/running-on-device-android.html#content).
