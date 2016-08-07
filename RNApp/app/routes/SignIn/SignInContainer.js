@@ -7,6 +7,7 @@ class SignInContainer extends Component {
   constructor(props) {
     super(props);
 
+    this.mounted = false;
     this.state = {
       email: '',
       password: '',
@@ -16,22 +17,34 @@ class SignInContainer extends Component {
     };
   }
 
+  componentWillMount() {
+    this.mounted = true;
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
+  }
+
+  handleError(error) {
+    this.mounted && this.setState({ error });
+  }
+
   validInput(overrideConfirm) {
     const { email, password, confirmPassword, confirmPasswordVisible } = this.state;
     let valid = true;
 
     if (email.length === 0 || password.length === 0) {
-      this.setState({ error: 'Email and password cannot be empty.' });
+      this.handleError('Email and password cannot be empty.');
       valid = false;
     }
 
     if (!overrideConfirm && confirmPasswordVisible && password !== confirmPassword) {
-      this.setState({ error: 'Passwords do not match.' });
+      this.handleError('Passwords do not match.');
       valid = false;
     }
 
     if (valid) {
-      this.setState({ error: null });
+      this.handleError(null);
     }
 
     return valid;
@@ -42,7 +55,7 @@ class SignInContainer extends Component {
       const { email, password } = this.state;
       Meteor.loginWithPassword(email, password, (err) => {
         if (err) {
-          this.setState({ error: err.reason });
+          this.handleError(err.reason);
         }
       });
     }
@@ -54,7 +67,7 @@ class SignInContainer extends Component {
     if (confirmPasswordVisible && this.validInput()) {
       Accounts.createUser({ email, password }, (err) => {
         if (err) {
-          this.setState({ error: err.reason });
+          this.handleError(err.reason);
         } else {
           // hack because react-native-meteor doesn't login right away after sign in
           this.handleSignIn();
