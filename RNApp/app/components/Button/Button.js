@@ -20,6 +20,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   text: 'Button Text',
+  // eslint-disable-next-line no-console
   onPress: () => console.log('Button Pressed'),
 };
 

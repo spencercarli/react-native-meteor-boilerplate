@@ -26,7 +26,9 @@ class SignInContainer extends Component {
   }
 
   handleError(error) {
-    this.mounted && this.setState({ error });
+    if (this.mounted) {
+      this.setState({ error });
+    }
   }
 
   validInput(overrideConfirm) {

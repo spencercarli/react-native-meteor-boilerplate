@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node_modules/react-native/packager/packager.sh"
+    "start": "node_modules/react-native/packager/packager.sh",
+    "lint": "eslint app/"
   },
   "dependencies": {
     "@exponent/react-native-navigator": "^0.4.7",

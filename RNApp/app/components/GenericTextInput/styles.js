@@ -2,7 +2,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 import { colors } from '../../config/styles';
 
 const window = Dimensions.get('window');
-export default styles = StyleSheet.create({
+export default StyleSheet.create({
   input: {
     height: 40,
     borderRadius: 5,

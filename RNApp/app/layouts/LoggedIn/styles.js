@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-export default styles = StyleSheet.create({
+export default StyleSheet.create({
   icon: {
     height: 30,
     width: 30,

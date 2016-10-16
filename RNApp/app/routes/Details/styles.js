@@ -3,9 +3,9 @@ import { colors } from '../../config/styles';
 
 const window = Dimensions.get('window');
 const MARGIN_HORIZONTAL = 10;
-const cardSize = (window.width - MARGIN_HORIZONTAL * 4) / 2;
+const cardSize = (window.width - (MARGIN_HORIZONTAL * 4)) / 2;
 
-export default styles = StyleSheet.create({
+export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,

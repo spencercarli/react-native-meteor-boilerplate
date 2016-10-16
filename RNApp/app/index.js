@@ -15,9 +15,8 @@ const RNApp = (props) => {
     return <Loading />;
   } else if (user !== null) {
     return <LoggedIn />;
-  } else {
-    return <LoggedOut />;
   }
+  return <LoggedOut />;
 };
 
 RNApp.propTypes = {
