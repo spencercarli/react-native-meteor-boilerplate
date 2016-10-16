@@ -18,7 +18,7 @@ You can checkout a _very_ quick walkthrough of the project [here](https://www.yo
 _Note_: You must be on a Mac for this.
 
 - Be sure your Meteor app is running: In the ```MeteorApp``` directory, type ```meteor```
- 
+
 You've got a few ways you can run the app for iOS:
 
 - From the `RNApp` directory run `react-native run-ios`
@@ -39,6 +39,7 @@ For further information please reference the [official docs](https://facebook.gi
 
 ## Running on Android Simulator
 
+- Be sure your Meteor app is running: In the ```MeteorApp``` directory, type ```meteor```
 - Get the IP address of your machine
 - In `RNApp/app/config/settings.js` change `localhost` to your machine's IP address
 - Make sure you have an emulator configured and running.
@@ -50,6 +51,7 @@ On linux running `ifconfig` will get you a list of your network interfaces along
 
 ## Running on Android Device
 
+- Be sure your Meteor app is running: In the ```MeteorApp``` directory, type ```meteor```
 - Make sure [USB Debugging is enabled](https://facebook.github.io/react-native/docs/running-on-device-android.html#prerequisite-usb-debugging)
 - Plug your device into your computer
 - Run `adb devices` to make sure your device shows up
