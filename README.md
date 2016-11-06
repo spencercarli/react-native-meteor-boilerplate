@@ -28,6 +28,7 @@ You've got a few ways you can run the app for iOS:
 
 _Note_: You must be on a Mac for this.
 
+- Be sure your Meteor app is running: In the ```MeteorApp``` directory, type ```meteor```
 - Get the IP address of your machine (you can run `ipconfig getifaddr en1` to do so)
 - In `RNApp/ios/RNApp/AppDelegate.m` change `localhost` to your machine's IP address
 - In `RNApp/app/config/settings.js` change `localhost` to your machine's IP address
