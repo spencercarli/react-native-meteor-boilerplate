@@ -15,7 +15,6 @@ export default StyleSheet.create({
   divider: {
     height: 1,
     backgroundColor: colors.inputDivider,
-    flex: 1,
     marginLeft: 10,
   },
   inputWrapper: {
