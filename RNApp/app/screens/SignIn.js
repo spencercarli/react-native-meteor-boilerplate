@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { LayoutAnimation } from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
 import { SignIn } from '../components/SignIn';
 
@@ -76,7 +75,6 @@ class SignInContainer extends Component {
         }
       });
     } else {
-      LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
       this.setState({ confirmPasswordVisible: true });
     }
   }

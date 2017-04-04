@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, View, Image } from 'react-native';
-import KeyboardSpacer from 'react-native-keyboard-spacer';
 import Button from '../Button';
 import GenericTextInput, { InputWrapper } from '../GenericTextInput';
 import images from '../../config/images';
@@ -50,8 +49,6 @@ const SignIn = (props) => {
         <Button text="Sign In" onPress={signIn} />
         <Button text="Create Account" onPress={createAccount} />
       </View>
-
-      <KeyboardSpacer />
     </View>
   );
 };
