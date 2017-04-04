@@ -8,13 +8,13 @@
     "lint:fix": "eslint app/ --fix"
   },
   "dependencies": {
-    "@exponent/react-native-navigator": "^0.4.7",
     "gravatar-api": "^1.4.0",
     "react": "^16.0.0-alpha.6",
     "react-native": "^0.43.0",
     "react-native-keyboard-spacer": "^0.3.0",
     "react-native-meteor": "^1.0.3",
-    "react-native-tab-navigator": "^0.3.3"
+    "react-native-tab-navigator": "^0.3.3",
+    "react-navigation": "git+https://github.com/react-community/react-navigation.git"
   },
   "devDependencies": {
     "babel-eslint": "^7.0.0",

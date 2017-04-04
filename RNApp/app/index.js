@@ -1,10 +1,10 @@
 import React from 'react';
 import Meteor, { createContainer } from 'react-native-meteor';
 
-import LoggedOut from './layouts/LoggedOut';
-import LoggedIn from './layouts/LoggedIn';
 import Loading from './components/Loading';
 import settings from './config/settings';
+
+import { MainTabs, SignInStack } from './config/router';
 
 Meteor.connect(settings.METEOR_URL);
 
@@ -14,9 +14,9 @@ const RNApp = (props) => {
   if (status.connected === false || loggingIn) {
     return <Loading />;
   } else if (user !== null) {
-    return <LoggedIn />;
+    return <MainTabs />;
   }
-  return <LoggedOut />;
+  return <SignInStack />;
 };
 
 RNApp.propTypes = {
