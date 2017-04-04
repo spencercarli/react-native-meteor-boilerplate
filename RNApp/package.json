@@ -4,23 +4,24 @@
   "private": true,
   "scripts": {
     "start": "node_modules/react-native/packager/packager.sh",
-    "lint": "eslint app/"
+    "lint": "eslint app/",
+    "lint:fix": "eslint app/ --fix"
   },
   "dependencies": {
     "@exponent/react-native-navigator": "^0.4.7",
     "gravatar-api": "^1.4.0",
-    "react": "^15.4.2",
-    "react-native": "^0.41.2",
+    "react": "^16.0.0-alpha.6",
+    "react-native": "^0.43.0",
     "react-native-keyboard-spacer": "^0.3.0",
-    "react-native-meteor": "^1.0.0-rc14",
+    "react-native-meteor": "^1.0.3",
     "react-native-tab-navigator": "^0.3.3"
   },
   "devDependencies": {
     "babel-eslint": "^7.0.0",
     "eslint": "^3.3.1",
-    "eslint-config-airbnb": "^12.0.0",
-    "eslint-plugin-import": "^1.16.0",
-    "eslint-plugin-jsx-a11y": "^2.1.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.1.1"
   }
 }
