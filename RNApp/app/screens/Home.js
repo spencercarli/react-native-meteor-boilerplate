@@ -1,13 +1,24 @@
-import React, { PropTypes } from 'react';
-import { Home } from '../components/Home';
+import React, { Component, PropTypes } from 'react';
+import { Container, HeaderText } from '../components/Home';
+import Button from '../components/Button';
 
-const HomeContainer = (props) => {
-  return (
-    <Home
-      onDetailsPress={() => props.navigation.navigate('Details')}
-    />
-  );
-};
+class HomeContainer extends Component {
+  handleDetailsPress = () => {
+    this.props.navigation.navigate('Details');
+  };
+
+  render() {
+    return (
+      <Container>
+        <HeaderText>Home</HeaderText>
+        <Button
+          text="Details"
+          onPress={this.handleDetailsPress}
+        />
+      </Container>
+    );
+  }
+}
 
 HomeContainer.propTypes = {
   navigation: PropTypes.object,

@@ -1,3 +1,7 @@
-import Profile from './Profile';
+import Container from './Container';
+import Body from './Body';
 
-export { Profile };
+export {
+  Container,
+  Body,
+};

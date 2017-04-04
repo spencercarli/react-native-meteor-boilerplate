@@ -1,3 +1,7 @@
-import Details from './Details';
+import Container from './Container';
+import Item from './Item';
 
-export { Details };
+export {
+  Container,
+  Item,
+};

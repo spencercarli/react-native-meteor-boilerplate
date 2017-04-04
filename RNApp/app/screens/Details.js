@@ -1,13 +1,25 @@
 import React, { PropTypes } from 'react';
+import { ScrollView } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
-import { Details } from '../components/Details';
+import { Container, Item } from '../components/Details';
+import Loading from '../components/Loading';
 
 const DetailsContainer = ({ detailsReady, details }) => {
+  if (!detailsReady) {
+    return <Loading />;
+  }
+
   return (
-    <Details
-      detailsReady={detailsReady}
-      details={details}
-    />
+    <Container>
+      <ScrollView>
+        {details.map((detail) => (
+          <Item
+            key={detail._id}
+            detail={detail}
+          />
+        ))}
+      </ScrollView>
+    </Container>
   );
 };
 

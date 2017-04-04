@@ -1,3 +1,7 @@
-import Home from './Home';
+import HeaderText from './HeaderText';
+import Container from './Container';
 
-export { Home };
+export {
+  HeaderText,
+  Container,
+};
