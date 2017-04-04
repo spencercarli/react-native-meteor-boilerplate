@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, View, Image } from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
-import Button from '../../components/Button';
-import GenericTextInput, { InputWrapper } from '../../components/GenericTextInput';
+import Button from '../Button';
+import GenericTextInput, { InputWrapper } from '../GenericTextInput';
 import images from '../../config/images';
 import styles from './styles';
 

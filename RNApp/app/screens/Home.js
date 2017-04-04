@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Home from './Home';
+import { Home } from '../components/Home';
 
 const HomeContainer = (props) => {
   return (

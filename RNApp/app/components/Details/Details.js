@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Text, View, ScrollView } from 'react-native';
-import Loading from '../../components/Loading';
+import Loading from '../Loading';
 import styles from './styles';
 
 const Details = ({ detailsReady, details }) => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { LayoutAnimation } from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
-import SignIn from './SignIn';
+import { SignIn } from '../components/SignIn';
 
 class SignInContainer extends Component {
   constructor(props) {

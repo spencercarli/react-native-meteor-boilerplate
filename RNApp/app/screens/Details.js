@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import Meteor, { createContainer } from 'react-native-meteor';
-import Details from './Details';
+import { Details } from '../components/Details';
 
 const DetailsContainer = ({ detailsReady, details }) => {
   return (

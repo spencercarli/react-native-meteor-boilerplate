@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, Image } from 'react-native';
-import Button from '../../components/Button';
-import Avatar from '../../components/Avatar';
+import Button from '../Button';
+import Avatar from '../Avatar';
 import images from '../../config/images';
 import { capitalize } from '../../lib/string';
 import styles from './styles';
