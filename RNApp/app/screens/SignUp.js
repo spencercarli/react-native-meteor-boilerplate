@@ -1,10 +1,10 @@
-import React, { Component, PropTypes } from 'react';
-import Meteor from 'react-native-meteor';
+import React, { Component } from 'react';
+import Meteor, { Accounts } from 'react-native-meteor';
 import { Container, ButtonContainer, Error, Header } from '../components/SignIn';
 import GenericTextInput, { InputWrapper } from '../components/GenericTextInput';
 import Button from '../components/Button';
 
-class SignIn extends Component {
+class SignUp extends Component {
   constructor(props) {
     super(props);
 
@@ -13,7 +13,6 @@ class SignIn extends Component {
       email: '',
       password: '',
       confirmPassword: '',
-      confirmPasswordVisible: false,
       error: null,
     };
   }
@@ -33,7 +32,7 @@ class SignIn extends Component {
   }
 
   validInput = (overrideConfirm) => {
-    const { email, password, confirmPassword, confirmPasswordVisible } = this.state;
+    const { email, password, confirmPassword } = this.state;
     let valid = true;
 
     if (email.length === 0 || password.length === 0) {
@@ -41,7 +40,7 @@ class SignIn extends Component {
       valid = false;
     }
 
-    if (!overrideConfirm && confirmPasswordVisible && password !== confirmPassword) {
+    if (!overrideConfirm && password !== confirmPassword) {
       this.handleError('Passwords do not match.');
       valid = false;
     }
@@ -65,7 +64,18 @@ class SignIn extends Component {
   };
 
   handleCreateAccount = () => {
-    this.props.navigation.navigate('SignUp');
+    const { email, password } = this.state;
+
+    if (this.validInput()) {
+      Accounts.createUser({ email, password }, (err) => {
+        if (err) {
+          this.handleError(err.reason);
+        } else {
+          // hack because react-native-meteor doesn't login right away after sign in
+          this.handleSignIn();
+        }
+      });
+    }
   };
 
   render() {
@@ -87,14 +97,12 @@ class SignIn extends Component {
             secureTextEntry
             borderTop
           />
-          {this.state.confirmPasswordVisible ?
-            <GenericTextInput
-              placeholder="confirm password"
-              onChangeText={(confirmPassword) => this.setState({ confirmPassword })}
-              secureTextEntry
-              borderTop
-            />
-          : null}
+          <GenericTextInput
+            placeholder="confirm password"
+            onChangeText={(confirmPassword) => this.setState({ confirmPassword })}
+            secureTextEntry
+            borderTop
+          />
         </InputWrapper>
 
         <Error error={this.state.error} />
@@ -108,8 +116,4 @@ class SignIn extends Component {
   }
 }
 
-SignIn.propTypes = {
-  navigation: PropTypes.object,
-};
-
-export default SignIn;
+export default SignUp;

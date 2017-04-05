@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Meteor, { createContainer } from 'react-native-meteor';
 import { Container, Body } from '../components/Profile';
 
-class ProfileContainer extends Component {
+class Profile extends Component {
   handleSignOut() {
     Meteor.logout();
   }
@@ -19,7 +19,7 @@ class ProfileContainer extends Component {
   }
 }
 
-ProfileContainer.propTypes = {
+Profile.propTypes = {
   user: React.PropTypes.object,
 };
 
@@ -27,4 +27,4 @@ export default createContainer(() => {
   return {
     user: Meteor.user(),
   };
-}, ProfileContainer);
+}, Profile);

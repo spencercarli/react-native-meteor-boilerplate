@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Container, HeaderText } from '../components/Home';
 import Button from '../components/Button';
 
-class HomeContainer extends Component {
+class Home extends Component {
   handleDetailsPress = () => {
     this.props.navigation.navigate('Details');
   };
@@ -20,8 +20,8 @@ class HomeContainer extends Component {
   }
 }
 
-HomeContainer.propTypes = {
+Home.propTypes = {
   navigation: PropTypes.object,
 };
 
-export default HomeContainer;
+export default Home;

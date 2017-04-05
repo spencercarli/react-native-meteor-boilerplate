@@ -4,7 +4,7 @@ import Meteor, { createContainer } from 'react-native-meteor';
 import { Container, Item } from '../components/Details';
 import Loading from '../components/Loading';
 
-const DetailsContainer = ({ detailsReady, details }) => {
+const Details = ({ detailsReady, details }) => {
   if (!detailsReady) {
     return <Loading />;
   }
@@ -23,7 +23,7 @@ const DetailsContainer = ({ detailsReady, details }) => {
   );
 };
 
-DetailsContainer.propTypes = {
+Details.propTypes = {
   detailsReady: PropTypes.bool,
   details: PropTypes.array,
 };
@@ -35,4 +35,4 @@ export default createContainer(() => {
     detailsReady: handle.ready(),
     details: Meteor.collection('details').find(),
   };
-}, DetailsContainer);
+}, Details);

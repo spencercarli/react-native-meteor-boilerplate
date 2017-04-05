@@ -8,6 +8,7 @@ import Home from '../screens/Home';
 import Details from '../screens/Details';
 import Profile from '../screens/Profile';
 import SignIn from '../screens/SignIn';
+import SignUp from '../screens/SignUp';
 import images from './images';
 
 export const HomeStack = StackNavigator({
@@ -64,6 +65,14 @@ export const SignInStack = StackNavigator({
         visible: false,
       },
     },
+  },
+  SignUp: {
+    screen: SignUp,
+    // navigationOptions: {
+    //   header: {
+    //     visible: false,
+    //   },
+    // },
   },
 }, {
   headerMode: 'screen',
