@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
 import Meteor, { createContainer } from 'react-native-meteor';
-import Profile from './Profile';
+import { Container, Body } from '../components/Profile';
 
-class ProfileContainer extends Component {
+class Profile extends Component {
   handleSignOut() {
     Meteor.logout();
   }
 
   render() {
-    const { user } = this.props;
-
     return (
-      <Profile
-        user={user}
-        signOut={this.handleSignOut.bind(this)}
-      />
+      <Container>
+        <Body
+          signOut={this.handleSignOut}
+          user={this.props.user}
+        />
+      </Container>
     );
   }
 }
 
-ProfileContainer.propTypes = {
+Profile.propTypes = {
   user: React.PropTypes.object,
 };
 
@@ -27,4 +27,4 @@ export default createContainer(() => {
   return {
     user: Meteor.user(),
   };
-}, ProfileContainer);
+}, Profile);

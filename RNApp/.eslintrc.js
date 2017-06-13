@@ -15,12 +15,10 @@ module.exports = {
     "class-methods-use-this": 0,
     "no-case-declarations": 0,
     "import/no-named-as-default": 0,
+    "react/require-default-props": 0
   },
   "parserOptions": {
     "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true
-    }
+    "sourceType": "module"
   },
 };
