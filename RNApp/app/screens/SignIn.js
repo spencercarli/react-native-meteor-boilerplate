@@ -6,7 +6,7 @@ import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { colors } from '../config/styles';
 import Button from '../components/Button';
 import GenericTextInput, { InputWrapper } from '../components/GenericTextInput';
-import images from '../config/images';
+import logoImage from '../images/rn-logo.png';
 
 const window = Dimensions.get('window');
 const styles = StyleSheet.create({
@@ -135,7 +135,7 @@ class SignIn extends Component {
         <View style={styles.header}>
           <Image
             style={styles.logo}
-            source={images.logo}
+            source={logoImage}
           />
 
           <Text style={styles.headerText}>React Native Meteor</Text>
