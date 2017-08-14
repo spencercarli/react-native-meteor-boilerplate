@@ -1,50 +1,77 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import Home from '../routes/Home';
-import Details from '../routes/Details';
-import Profile from '../routes/Profile';
-import SignIn from '../routes/SignIn';
+import { Image } from 'react-native';
+import { StackNavigator, TabNavigator } from 'react-navigation';
 
-export const routes = {
-  getHomeRoute() {
-    return {
-      renderScene(navigator) {
-        return <Home navigator={navigator} />;
-      },
+import Home from '../screens/Home';
+import Details from '../screens/Details';
+import Profile from '../screens/Profile';
+import SignIn from '../screens/SignIn';
 
-      getTitle() {
-        return 'Home';
-      },
-    };
+import homeIcon from '../images/home-icon.png';
+import profileIcon from '../images/user-icon.png';
+
+export const AuthStack = StackNavigator({
+  SignIn: {
+    screen: SignIn,
   },
-  getDetailsRoute() {
-    return {
-      renderScene(navigator) {
-        return <Details navigator={navigator} />;
-      },
+}, {
+  headerMode: 'none',
+});
 
-      getTitle() {
-        return 'Details';
-      },
-    };
+export const HomeStack = StackNavigator({
+  Home: {
+    screen: Home,
+    navigationOptions: {
+      headerTitle: 'Home',
+    },
   },
-  getProfileRoute() {
-    return {
-      renderScene(navigator) {
-        return <Profile navigator={navigator} />;
-      },
-
-      showNavigationBar: false,
-    };
+  Details: {
+    screen: Details,
+    navigationOptions: {
+      headerTitle: 'Details',
+    },
   },
-  getSignInRoute() {
-    return {
-      renderScene(navigator) {
-        return <SignIn navigator={navigator} />;
-      },
+});
 
-      showNavigationBar: false,
-    };
+export const ProfileStack = StackNavigator({
+  Profile: {
+    screen: Profile,
+  },
+}, {
+  headerMode: 'none',
+});
+
+const styles = {
+  icon: {
+    height: 30,
+    width: 30,
   },
 };
 
-export default routes;
+export const Tabs = TabNavigator({
+  Home: {
+    screen: HomeStack,
+    navigationOptions: {
+      tabBarLabel: 'Home',
+      tabBarIcon: ({ tintColor }) => (
+        <Image
+          style={[styles.icon, { tintColor }]}
+          source={homeIcon}
+        />
+      ),
+    },
+  },
+  Profile: {
+    screen: ProfileStack,
+    navigationOptions: {
+      tabBarLabel: 'Profile',
+      tabBarIcon: ({ tintColor }) => (
+        <Image
+          style={[styles.icon, { tintColor }]}
+          source={profileIcon}
+        />
+      ),
+    },
+  },
+});

@@ -15,6 +15,7 @@ module.exports = {
     "class-methods-use-this": 0,
     "no-case-declarations": 0,
     "import/no-named-as-default": 0,
+    "new-cap": 0,
   },
   "parserOptions": {
     "ecmaVersion": 6,
