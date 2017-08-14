@@ -1,8 +1,8 @@
 import React from 'react';
-import Home from '../routes/Home';
-import Details from '../routes/Details';
-import Profile from '../routes/Profile';
-import SignIn from '../routes/SignIn';
+import Home from '../screens/Home';
+import Details from '../screens/Details';
+import Profile from '../screens/Profile';
+import SignIn from '../screens/SignIn';
 
 export const routes = {
   getHomeRoute() {

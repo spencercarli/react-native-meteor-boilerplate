@@ -22,7 +22,6 @@ _Note_: You must be on a Mac for this.
 You've got a few ways you can run the app for iOS:
 
 - From the `RNApp` directory run `react-native run-ios`
-- From the `RNApp` directory run `npm run ios` then start the project in Xcode
 
 ## Running on iOS Device
 
@@ -78,10 +77,6 @@ Check that your device is properly connecting to ADB, the Android Debug Bridge, 
 _Note:_ You should have only one active ADB connection. If you have a simulator running you should close it before proceeding.
 
 These steps are abstracted from the pages [running on device](https://facebook.github.io/react-native/docs/running-on-device-android.html) and [getting started](https://facebook.github.io/react-native/docs/getting-started-linux.html#setting-up-an-android-device) on linux.
-
-## Project Structure
-
-Check out [this article](https://medium.com/@spencer_carli/organizing-a-react-native-project-9514dfadaa0#.361gf1awu) for an overview of the `RNApp` directory.
 
 ## Questions?
 

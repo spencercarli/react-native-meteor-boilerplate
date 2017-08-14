@@ -1,10 +1,21 @@
 import React from 'react';
-import { Image } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import ExNavigator from '@exponent/react-native-navigator';
-import Routes from '../../config/routes';
-import images from '../../config/images';
-import styles from './styles';
+import Routes from '../config/routes';
+import images from '../config/images';
+
+const styles = StyleSheet.create({
+  icon: {
+    height: 30,
+    width: 30,
+    tintColor: '#929292',
+  },
+  iconSelected: {
+    tintColor: 'rgb(0, 122, 255)',
+  },
+});
+
 
 class LoggedIn extends React.Component {
   constructor(props) {

@@ -1,8 +1,8 @@
 import React from 'react';
 import Meteor, { createContainer } from 'react-native-meteor';
 
-import LoggedOut from './layouts/LoggedOut';
-import LoggedIn from './layouts/LoggedIn';
+import LoggedOut from './screens/LoggedOut';
+import LoggedIn from './screens/LoggedIn';
 import Loading from './components/Loading';
 import settings from './config/settings';
 
