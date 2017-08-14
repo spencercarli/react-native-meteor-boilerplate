@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { colors } from '../config/styles';
-import Routes from '../config/routes';
 import Button from '../components/Button';
 
 const styles = StyleSheet.create({
@@ -28,14 +27,14 @@ const Home = (props) => {
       </Text>
       <Button
         text="Details"
-        onPress={() => props.navigator.push(Routes.getDetailsRoute())}
+        onPress={() => props.navigation.navigate('Details')}
       />
     </View>
   );
 };
 
 Home.propTypes = {
-  navigator: React.PropTypes.object,
+  navigation: React.PropTypes.object,
 };
 
 export default Home;
