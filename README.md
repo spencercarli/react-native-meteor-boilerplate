@@ -35,7 +35,7 @@ _Note_: You must be on a Mac for this.
 - Open the project in Xcode
 - Select your device in Xcode and press "Build and run"
 
-For further information please reference the [official docs](https://facebook.github.io/react-native/docs/running-on-device-ios.html#content).
+For further information please reference the [official docs](https://facebook.github.io/react-native/docs/running-on-device#running-your-app-on-ios-devices).
 
 ## Running on Android Simulator
 
@@ -52,14 +52,14 @@ On linux running `ifconfig` will get you a list of your network interfaces along
 ## Running on Android Device
 
 - Be sure your Meteor app is running: In the ```MeteorApp``` directory, type ```meteor```
-- Make sure [USB Debugging is enabled](https://facebook.github.io/react-native/docs/running-on-device-android.html#prerequisite-usb-debugging)
+- Make sure [USB Debugging is enabled](https://facebook.github.io/react-native/docs/running-on-device#1-enable-debugging-over-usb)
 - Plug your device into your computer
 - Run `adb devices` to make sure your device shows up
 - Run `adb reverse tcp:8081 tcp:8081`
 - In `RNApp/app/config/settings.js` change `localhost` in `METEOR_URL` to your computer's IP address (see note in "Running on Android" section on how to get your IP Address)
 - Run `react-native run-android`
 
-For further information please reference the [official docs](https://facebook.github.io/react-native/docs/running-on-device-android.html#content).
+For further information please reference the [official docs](https://facebook.github.io/react-native/docs/running-on-device#running-your-app-on-android-devices).
 
 ## Linux Setup for Android Dev
 
@@ -77,7 +77,7 @@ Check that your device is properly connecting to ADB, the Android Debug Bridge, 
 
 _Note:_ You should have only one active ADB connection. If you have a simulator running you should close it before proceeding.
 
-These steps are abstracted from the pages [running on device](https://facebook.github.io/react-native/docs/running-on-device-android.html) and [getting started](https://facebook.github.io/react-native/docs/getting-started-linux.html#setting-up-an-android-device) on linux.
+These steps are abstracted from the pages [running on device](https://facebook.github.io/react-native/docs/running-on-device#running-your-app-on-android-devices) selecting the Linux Tab.
 
 ## Questions?
 
