@@ -63,7 +63,7 @@ For further information please reference the [official docs](https://facebook.gi
 
 ## Linux Setup for Android Dev
 
-Configure how the device will connect to the meteor server. See [running android on a device](https://facebook.github.io/react-native/docs/running-on-device-android.html) to pick from the options.
+Configure how the device will connect to the meteor server. See [running android on a device](https://facebook.github.io/react-native/docs/running-on-device#running-your-app-on-android-devices) to pick from the options.
 
 Plug in your device and use _lusb_ to find the first 4 digits of  your device ID.
 > lsusb
